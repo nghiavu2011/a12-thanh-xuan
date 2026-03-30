@@ -97,6 +97,29 @@ body{background:var(--deep);color:var(--cream);font-family:'Be Vietnam Pro',sans
 .mx{position:absolute;top:-45px;right:0;font-size:12px;letter-spacing:2px;color:rgba(255,255,255,.7);cursor:pointer;text-transform:uppercase; pointer-events:all; transition:color .3s; background:rgba(0,0,0,0.4); padding: 5px 10px;}
 .mx:hover{color:var(--gold);}
 
+/* GRID VIEW (2D) */
+#grid-view{position:relative;z-index:40;display:none;padding:80px 5% 50px;background:var(--deep);min-height:100vh;}
+#grid-view.active{display:block;}
+.gv-ch{margin-bottom:50px;}
+.gv-tit{font-family:'Playfair Display',serif;font-size:32px;color:var(--gold);margin-bottom:8px;border-bottom:1px solid rgba(201,168,76,0.3);padding-bottom:10px;}
+.gv-sub{font-size:14px;color:var(--soft);font-style:italic;margin-bottom:24px;}
+.gv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;}
+@media (min-width: 768px) { .gv-grid{grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;} }
+.gv-item{position:relative;aspect-ratio:3/4;border-radius:6px;overflow:hidden;cursor:pointer;border:1px solid rgba(255,255,255,0.05);background:#1a1510;transition:transform .3s,border-color .3s;}
+.gv-item:hover{transform:translateY(-5px);border-color:var(--gold);}
+.gv-item img, .gv-item video{width:100%;height:100%;object-fit:cover;transition:opacity .3s;}
+.gv-ibadge{position:absolute;top:8px;right:8px;background:rgba(0,0,0,0.7);color:var(--gold);font-size:10px;padding:4px 8px;border-radius:12px;backdrop-filter:blur(4px);pointer-events:none;}
+
+/* TOGGLE BEHAVIOR */
+.view-grid body{overflow-y:auto;}
+.view-grid #scroll-container{display:none !important;}
+.view-grid #hero{display:none !important;}
+.view-grid #cl{display:none !important;}
+.view-grid #bp{display:none !important;}
+.view-grid #fin{display:none !important;}
+.view-grid #ui{opacity:1 !important;background:rgba(14,10,7,0.95);border-bottom:1px solid rgba(255,255,255,0.05);position:fixed;height:70px;backdrop-filter:blur(20px);}
+.view-grid #topbar{background:transparent;padding:12px 24px;}
+
 /* FINALE */
 #fin{position:fixed;inset:0;z-index:150;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none;opacity:0;transition:all 1s;background:rgba(0,0,0,0);}
 #fin.show{opacity:1;pointer-events:all;background:rgba(0,0,0,.92);}
@@ -154,6 +177,7 @@ body{background:var(--deep);color:var(--cream);font-family:'Be Vietnam Pro',sans
     <div class="tt">Niềm tự hào Lê Quý Đôn</div>
   </div>
   <div id="rc">
+    <div class="btn" onclick="toggleViewMode()"><span id="vicon">📱</span><span id="vlbl">Chế độ Lưới (Mobile)</span></div>
     <div class="btn" onclick="randomMem()"><span>🎲</span><span>Kỷ niệm ngẫu nhiên</span></div>
     <div class="btn" id="navbtn" onclick="toggleNav()"><span>🧭</span><span>Bản đồ hành trình</span></div>
     <div class="btn" onclick="togMusic()"><span id="micon">🔇</span><span id="mlbl">Bật nhạc</span></div>
@@ -172,6 +196,8 @@ body{background:var(--deep);color:var(--cream);font-family:'Be Vietnam Pro',sans
     <div id="ptxt">0% — Khởi đầu</div>
   </div>
 </div>
+
+<div id="grid-view"></div>
 
 <div id="modal" onclick="if(event.target===this)closeM()">
   <div class="mi">
@@ -460,11 +486,11 @@ function startScene(FD) {
     const hits = ray.intersectObjects(fg.children, true);
     if(hits.length) {
       let o = hits[0].object; while(o.parent && o.parent !== fg) o = o.parent;
-      if(o.userData.src) openM(o.userData);
+      if(o.userData.src) window.openM(o.userData);
     }
   });
 
-  function openM(fd) {
+  window.openM = function(fd) {
     const mi = document.getElementById('mimg'), mv = document.getElementById('mvid');
     mi.style.display='none'; mv.style.display='none'; mv.pause();
     if(fd.type === 'video') {
@@ -476,7 +502,7 @@ function startScene(FD) {
     document.getElementById('msub').innerText = fd.meta.sub;
     document.getElementById('mtag').innerText = fd.meta.tag;
     document.getElementById('modal').classList.add('open');
-  }
+  };
   window.closeM = () => { document.getElementById('modal').classList.remove('open'); document.getElementById('mvid').pause(); };
   window.addEventListener('keydown', e => { if(e.key==='Escape') closeM(); });
 
@@ -499,22 +525,79 @@ function startScene(FD) {
   };
 
   function animate(t) {
+    if(!document.body.classList.contains('view-grid')) {
+      cZ += (tZ - cZ) * 0.08;
+      cam.position.z = cZ;
+      cam.position.x += (mouse.x * 2 - cam.position.x) * 0.05;
+      cam.position.y += (-mouse.y * 1.5 - cam.position.y) * 0.05;
+      cam.lookAt(cam.position.x, cam.position.y, cam.position.z - 10);
+      
+      points.rotation.y = t * 0.0001;
+      fms.forEach((f, i) => {
+        f.position.y += Math.sin(t * 0.001 + i) * 0.002;
+        f.rotation.z += Math.cos(t * 0.0008 + i) * 0.0001;
+      });
+      ren.render(scene, cam);
+    }
     requestAnimationFrame(animate);
-    cZ += (tZ - cZ) * 0.08;
-    cam.position.z = cZ;
-    cam.position.x += (mouse.x * 2 - cam.position.x) * 0.05;
-    cam.position.y += (-mouse.y * 1.5 - cam.position.y) * 0.05;
-    cam.lookAt(cam.position.x, cam.position.y, cam.position.z - 10);
-    
-    points.rotation.y = t * 0.0001;
-    fms.forEach((f, i) => {
-      f.position.y += Math.sin(t * 0.001 + i) * 0.002;
-      f.rotation.z += Math.cos(t * 0.0008 + i) * 0.0001;
-    });
-    
-    ren.render(scene, cam);
   }
   requestAnimationFrame(animate);
+}
+
+// ─── GRID VIEW LOGIC ──────────────
+let isGridView = false;
+window.toggleViewMode = () => {
+  isGridView = !isGridView;
+  document.body.classList.toggle('view-grid', isGridView);
+  document.getElementById('grid-view').classList.toggle('active', isGridView);
+  document.getElementById('vicon').innerText = isGridView ? '🌌' : '📱';
+  document.getElementById('vlbl').innerText = isGridView ? 'Chế độ 3D' : 'Chế độ Lưới (Mobile)';
+  
+  if(isGridView && document.getElementById('grid-view').innerHTML === '') {
+    renderGrid();
+  }
+  
+  // Jump to top to reset scroll safely
+  if(!isGridView) {
+      window.scrollTo(0,0);
+  } else {
+      // In grid view we reset body scroll behavior
+      document.body.style.overflow = 'auto';
+  }
+};
+
+function renderGrid() {
+  const cont = document.getElementById('grid-view');
+  let html = '';
+  
+  const sections = [
+    { id:'cap', title:'Thước Phim (Video)', sub:'Dòng thời gian sống động', arr: VIDS.map(n => ({src:B_VID+n, m:getMediaMeta(n), t:'video'})) },
+    { id:'trip', title:'Hồi Ức & Chuyến Đi', sub:'Những bước chân đầu tiên', arr: IMGS.filter(n=>getMediaMeta(n).cat==='trip'||getMediaMeta(n).cat==='general').map(n=>({src:B_IMG+n, m:getMediaMeta(n), t:'img'})) },
+    { id:'study', title:'Say Mê Học Tập', sub:'Nỗ lực không ngừng vì tương lai', arr: IMGS.filter(n=>getMediaMeta(n).cat==='study').map(n=>({src:B_IMG+n, m:getMediaMeta(n), t:'img'})) },
+    { id:'dining', title:'Gắn Kết & Bạn Bè', sub:'Tình bạn kết tinh qua từng bữa ăn', arr: IMGS.filter(n=>getMediaMeta(n).cat==='dining'||getMediaMeta(n).cat==='portrait').map(n=>({src:B_IMG+n, m:getMediaMeta(n), t:'img'})) }
+  ];
+
+  sections.forEach(sec => {
+    if(sec.arr.length === 0) return;
+    html += `<div class="gv-ch">
+      <div class="gv-tit">${sec.title}</div>
+      <div class="gv-sub">${sec.sub}</div>
+      <div class="gv-grid">`;
+    sec.arr.forEach((item) => {
+      const d = JSON.stringify({src:item.src, type:item.t, meta:item.m}).replace(/"/g, '&quot;');
+      html += `<div class="gv-item" onclick="window.openM(${d})">`;
+      if(item.t==='video') {
+         html += `<video src="${item.src}" muted loop onmouseover="this.play()" onmouseout="this.pause()"></video><div class="gv-ibadge">▶ Video</div>`;
+      } else {
+         html += `<img loading="lazy" src="${item.src}">`;
+      }
+      html += `</div>`;
+    });
+    html += `</div></div>`;
+  });
+  
+  html += `<div style="text-align:center; margin-top:60px; color:var(--soft); font-style:italic;">— Thanh xuân này, cảm ơn vì có các bạn —</div>`;
+  cont.innerHTML = html;
 }
 </script>
 </body>
