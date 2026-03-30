@@ -17,24 +17,23 @@ body{background:var(--deep);color:var(--cream);font-family:'Be Vietnam Pro',sans
 #cursor{position:fixed;width:10px;height:10px;background:var(--amber);border-radius:50%;pointer-events:none;z-index:9999;mix-blend-mode:screen;transform:translate(-50%,-50%);transition:transform .15s;}
 #cursor-ring{position:fixed;width:34px;height:34px;border:1.5px solid rgba(232,168,56,.45);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .25s,height .25s;}
 
-#scroll-container{height:1100vh;position:relative;}
+#scroll-container{height:1200vh;position:relative;}
 #c3d{position:fixed;top:0;left:0;width:100%;height:100%;z-index:1;}
 
 #grain{position:fixed;top:-50%;left:-50%;width:200%;height:200%;
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.07'/%3E%3C/svg%3E");
-  opacity:.3;pointer-events:none;z-index:100;animation:gr .5s steps(2) infinite;}
+  opacity:.32;pointer-events:none;z-index:100;animation:gr .5s steps(2) infinite;}
 @keyframes gr{0%{transform:translate(0,0)}25%{transform:translate(-3px,2px)}50%{transform:translate(2px,-3px)}75%{transform:translate(-1px,1px)}}
 
-/* Cinematic Light Leaks */
 #cinematic-leaks {
-  position:fixed; inset:0; pointer-events:none; z-index:9; mix-blend-mode:screen; opacity:0.15;
+  position:fixed; inset:0; pointer-events:none; z-index:9; mix-blend-mode:screen; opacity:0.18;
   background: radial-gradient(circle at 10% 20%, rgba(201,168,76,0.3) 0%, transparent 40%),
               radial-gradient(circle at 90% 80%, rgba(139,115,85,0.2) 0%, transparent 50%);
   animation: breatheLeaks 12s infinite alternate ease-in-out;
 }
 @keyframes breatheLeaks{0%{opacity:0.1; transform:scale(1)}100%{opacity:0.25; transform:scale(1.1)}}
 
-#vignette{position:fixed;inset:0;background:radial-gradient(ellipse at center,transparent 30%,rgba(6,4,2,.85) 100%);pointer-events:none;z-index:10;}
+#vignette{position:fixed;inset:0;background:radial-gradient(ellipse at center,transparent 25%,rgba(6,4,2,.9) 100%);pointer-events:none;z-index:10;}
 
 /* LOADING */
 #ls{position:fixed;inset:0;background:var(--deep);z-index:500;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;transition:opacity 1.2s;}
@@ -73,7 +72,7 @@ body{background:var(--deep);color:var(--cream);font-family:'Be Vietnam Pro',sans
 .btn{display:flex;align-items:center;gap:9px;padding:9px 14px;background:rgba(14,10,7,.72);backdrop-filter:blur(12px);border:1px solid var(--glass);border-radius:40px;color:var(--cream);font-family:'Be Vietnam Pro',sans-serif;font-size:12px;cursor:pointer;transition:all .22s;white-space:nowrap;}
 .btn:hover{background:rgba(201,168,76,.14);border-color:var(--gold);transform:translateX(-3px);}
 
-#cnav{position:absolute;right:178px;top:36%;background:rgba(12,8,5,.97);backdrop-filter:blur(20px);border:1px solid var(--glass);border-radius:12px;padding:6px;display:none;flex-direction:column;gap:2px;min-width:210px;}
+#cnav{position:absolute;right:178px;top:36%;background:rgba(12,8,5,.97);backdrop-filter:blur(20px);border:1px solid var(--glass);border-radius:12px;padding:6px;display:none;flex-direction:column;gap:2px;min-width:230px;}
 #cnav.open{display:flex;}
 .cni{padding:9px 13px;border-radius:8px;font-size:12px;cursor:pointer;transition:background .2s;display:flex;align-items:center;gap:9px;}
 .cni:hover{background:rgba(201,168,76,.1);}
@@ -84,41 +83,33 @@ body{background:var(--deep);color:var(--cream);font-family:'Be Vietnam Pro',sans
 .pt{width:170px;height:2px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden;}
 #pf{height:100%;background:linear-gradient(90deg,var(--gold),var(--amber));width:0%;transition:width .25s;}
 #ptxt{font-size:11px;color:var(--gold);margin-top:5px;font-weight:500;}
-#skipbtn{position:absolute;bottom:24px;right:20px;pointer-events:all;}
 
 /* MODAL */
 #modal{position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.92);backdrop-filter:blur(30px);opacity:0;pointer-events:none;transition:opacity .4s ease; cursor:pointer;}
 #modal.open{opacity:1;pointer-events:all;}
-.mi{position:relative;max-width:900px;max-height:85vh;width:92%;text-align:center; pointer-events:none; cursor:default; transform:scale(0.95); transition:transform .4s cubic-bezier(.34,1.56,.64,1);}
+.mi{position:relative;max-width:1000px;max-height:85vh;width:94%;text-align:center; pointer-events:none; cursor:default; transform:scale(0.95); transition:transform .4s cubic-bezier(.34,1.56,.64,1);}
 #modal.open .mi{transform:scale(1);}
-.mf{border-radius:6px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.9); position: relative; display:inline-block; max-height: 75vh; pointer-events:all;}
-#mimg{max-width:100%; max-height:75vh; display:block; object-fit:contain; background:#000;}
+.mf{border-radius:6px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,1); position: relative; display:inline-block; max-height: 75vh; pointer-events:all;}
+#mimg, #mvid{max-width:100%; max-height:75vh; display:none; object-fit:contain; background:#000;}
 .mc{font-family:'Playfair Display',serif;font-size:24px;margin-top:24px; color:var(--cream); text-shadow:0 2px 10px rgba(0,0,0,0.5);}
 .ms{font-size:14px;color:var(--soft);margin-top:6px;font-style:italic;}
 .mtag{display:inline-block;margin-top:14px;padding:5px 14px;border:1px solid rgba(201,168,76,.4);border-radius:20px;font-size:11px;color:var(--gold);letter-spacing:1.5px; text-transform:uppercase;}
-.mx{position:absolute;top:-40px;right:0;font-size:12px;letter-spacing:2px;color:rgba(255,255,255,.6);cursor:pointer;text-transform:uppercase; pointer-events:all; transition:color .3s;}
+.mx{position:absolute;top:-45px;right:0;font-size:12px;letter-spacing:2px;color:rgba(255,255,255,.7);cursor:pointer;text-transform:uppercase; pointer-events:all; transition:color .3s; background:rgba(0,0,0,0.4); padding: 5px 10px;}
 .mx:hover{color:var(--gold);}
 .mesc_hint{position:absolute; top:20px; left:20px; font-size:11px; color:rgba(255,255,255,.4); letter-spacing:2px; pointer-events:none; text-transform:uppercase;}
 
-/* TOAST */
-#toast{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(.85);z-index:250;text-align:center;opacity:0;pointer-events:none;transition:all .4s cubic-bezier(.34,1.56,.64,1);background:rgba(8,5,2,.95);backdrop-filter:blur(20px);border:1px solid rgba(201,168,76,.3);border-radius:8px;padding:32px 48px; box-shadow:0 20px 60px rgba(0,0,0,0.8);}
-#toast.show{opacity:1;transform:translate(-50%,-50%) scale(1);}
-.tl2{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
-.tt2{font-family:'Playfair Display',serif;font-size:clamp(18px,2.5vw,26px);max-width:400px;line-height:1.5; font-style:italic;}
-
 /* FINALE */
 #fin{position:fixed;inset:0;z-index:150;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none;opacity:0;transition:all 1s;background:rgba(0,0,0,0);}
-#fin.show{opacity:1;pointer-events:all;background:rgba(0,0,0,.88);}
+#fin.show{opacity:1;pointer-events:all;background:rgba(0,0,0,.92);}
 .ft{font-family:'Playfair Display',serif;font-size:clamp(26px,4vw,56px);text-align:center;font-style:italic;margin-bottom:16px; line-height: 1.3;}
-.fs{color:var(--soft);font-size:14px;margin-bottom:50px;letter-spacing:1.5px;text-align:center; font-style:italic; max-width:640px; line-height:1.6;}
+.fs{color:var(--soft);font-size:14px;margin-bottom:50px;letter-spacing:1.5px;text-align:center; font-style:italic; max-width:680px; line-height:1.7;}
 .fa{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;}
 .fb{padding:14px 28px;font-family:'Be Vietnam Pro',sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;border:1px solid var(--gold);background:rgba(201,168,76,.05);color:var(--gold);border-radius:4px;cursor:pointer;transition:all .3s; text-decoration: none;}
 .fb:hover,.fb.p{background:var(--gold);color:var(--deep); box-shadow: 0 0 20px rgba(201,168,76,.2);}
 
 @media (max-width: 768px) {
-  #rc { top: auto; bottom: 80px; right: 20px; flex-direction: row; flex-wrap: wrap; width: 100%; justify-content: flex-end; padding-right: 40px;}
-  #bp { bottom: 120px; }
-  #skipbtn { bottom: 80px; }
+  #rc { top: auto; bottom: 85px; right: 20px; flex-direction: row; flex-wrap: wrap; width: 100%; justify-content: flex-end; padding-right: 40px;}
+  #bp { bottom: 130px; }
   .btn { padding: 6px 12px; font-size: 11px; }
   .mesc_hint { display:none; }
 }
@@ -139,58 +130,58 @@ body{background:var(--deep);color:var(--cream);font-family:'Be Vietnam Pro',sans
 
 <div id="ls">
   <div class="ll">A12</div>
-  <div class="lsub">Một Thanh Xuân Rực Rỡ</div>
+  <div class="lsub">Triển Lãm Thanh Xuân</div>
   <div class="lbw"><div id="lbar"></div></div>
-  <div class="lhint" id="lhint">Đang tải không gian kỷ niệm…</div>
+  <div class="lhint" id="lhint">Đang khởi tạo không gian kỷ niệm…</div>
 </div>
 
 <div id="scroll-container"><canvas id="c3d"></canvas></div>
 
 <div id="hero">
   <div class="hh">A12 — Một thanh xuân<br><em>rực rỡ.</em></div>
-  <div class="hsub">Triển lãm 3D lưu giữ những khoảnh khắc đẹp nhất của tập thể lớp A12. Về tình đoàn kết, nỗ lực học tập và những tháng năm không thể quên.</div>
-  <button class="hcta" onclick="enterEx()">✦ Bắt đầu hành trình</button>
+  <div class="hsub">Dành cho phụ huynh và học sinh lớp A12. Nơi lưu giữ những khoảnh khắc về tình bạn, sự nỗ lực và những kỷ niệm vô giá.</div>
+  <button class="hcta" onclick="enterEx()">✦ Bước vào triển lãm</button>
   <div class="hsh"><div class="sl"></div><span>cuộn xuống</span></div>
 </div>
 
 <div id="cl">
   <div class="cn" id="cnum">Chương I</div>
-  <div class="ct" id="ctit">Khởi Đầu</div>
-  <div class="csub" id="csub">Những ngày ngây ngô</div>
+  <div class="ct" id="ctit">Đoàn Kết</div>
+  <div class="csub" id="csub">Sức mạnh từ tập thể</div>
 </div>
 
 <div id="ui">
   <div id="topbar">
     <div class="tl">A12</div>
-    <div class="tt">Kỷ Niệm Floating Frames</div>
+    <div class="tt">Kỷ Niệm 3D Cinematic</div>
   </div>
   <div id="rc">
-    <div class="btn" onclick="randomMem()"><span>✨</span><span>Ngẫu nhiên</span></div>
-    <div class="btn" id="navbtn" onclick="toggleNav()"><span>🧭</span><span>Mục lục</span></div>
+    <div class="btn" onclick="randomMem()"><span>🎲</span><span>Kỷ niệm ngẫu nhiên</span></div>
+    <div class="btn" id="navbtn" onclick="toggleNav()"><span>🧭</span><span>Bản đồ hành trình</span></div>
     <div class="btn" onclick="togMusic()"><span id="micon">🔇</span><span id="mlbl">Bật nhạc</span></div>
   </div>
   <div id="cnav">
     <div class="cni" onclick="jumpCh(0)"><div class="nd"></div>Lối vào (Entrance)</div>
-    <div class="cni" onclick="jumpCh(1)"><div class="nd"></div>Chương I: Gặp Gỡ</div>
-    <div class="cni" onclick="jumpCh(2)"><div class="nd"></div>Chương II: Học Tập</div>
-    <div class="cni" onclick="jumpCh(3)"><div class="nd"></div>Chương III: Đoàn Kết</div>
-    <div class="cni" onclick="jumpCh(4)"><div class="nd"></div>Chương IV: Kỷ Niệm</div>
+    <div class="cni" onclick="jumpCh(1)"><div class="nd"></div>Chương I: Gặp Gỡ & Gắn Kết</div>
+    <div class="cni" onclick="jumpCh(2)"><div class="nd"></div>Chương II: Học Tập & Nỗ Lực</div>
+    <div class="cni" onclick="jumpCh(3)"><div class="nd"></div>Chương III: Trái Tim Tập Thể</div>
+    <div class="cni" onclick="jumpCh(4)"><div class="nd"></div>Chương IV: Phim Kỷ Niệm (Video)</div>
     <div class="cni" onclick="jumpCh(5)"><div class="nd"></div>Lời Kết (Finale)</div>
   </div>
   <div id="bp">
-    <div class="pl">Hành trình trải nghiệm</div>
+    <div class="pl">Hành trình</div>
     <div class="pt"><div id="pf"></div></div>
     <div id="ptxt">0% — Lối vào</div>
   </div>
-  <div class="btn" id="skipbtn" onclick="skipNext()"><span>⏭</span><span>Tới chương kế</span></div>
 </div>
 
 <div id="modal" onclick="if(event.target===this)closeM()">
-  <div class="mesc_hint">Nhấn ESC hoặc click ra ngoài để đóng</div>
+  <div class="mesc_hint">ESC để đóng</div>
   <div class="mi">
     <div class="mx" onclick="closeM()">✕ Đóng</div>
     <div class="mf">
-        <img id="mimg" src="" alt="A12 Image">
+        <img id="mimg" src="" alt="A12 Memory">
+        <video id="mvid" controls playsinline></video>
     </div>
     <div class="mc" id="mcap"></div>
     <div class="ms" id="msub"></div>
@@ -198,18 +189,11 @@ body{background:var(--deep);color:var(--cream);font-family:'Be Vietnam Pro',sans
   </div>
 </div>
 
-<div id="toast">
-  <div class="tl2">✦ Thông điệp thanh xuân</div>
-  <div class="tt2" id="ttext"></div>
-</div>
-
 <div id="fin">
-  <div class="ft">"Tương lai xán lạn hay mờ mịt,<br>Đều bắt đầu từ những nỗ lực hôm nay."</div>
-  <div class="fs">— Cảm ơn một tập thể A12 luôn sát vai bên nhau, từ những giờ tự quản gay cấn đến những phút giải lao ấm áp tình bạn. Khung trời kỷ niệm này sẽ mãi khắc ghi dấu ấn của mọi người. —</div>
+  <div class="ft">"Cảm ơn vì đã là<br>một phần tự hào của A12."</div>
+  <div class="fs">— Chúng ta đã cùng nhau viết nên một chương tuyệt đẹp của tuổi trẻ. Những nỗ lực học tập, những tiếng cười giòn giã và cả tình đoàn kết keo sơn này sẽ là hành trang quý báu nhất. —</div>
   <div class="fa">
-    <button class="fb p" onclick="window.scrollTo({top:0, behavior:'smooth'})">⇧ Xem lại từ đầu</button>
-    <a href="index.html" class="fb" style="pointer-events:none; opacity:0; width:0; height:0; padding:0; border:0;"></a> 
-    <!-- Note: Keeping the class standard structure, hidden link for backward compatibility if needed -->
+    <button class="fb p" onclick="window.scrollTo({top:0, behavior:'smooth'})">⇧ Trải nghiệm lại</button>
   </div>
 </div>
 
@@ -228,12 +212,12 @@ body{background:var(--deep);color:var(--cream);font-family:'Be Vietnam Pro',sans
 
 // ─── LOADING ─────────
 var lp=0, lhi=0;
-var lhints=['Đang tìm những khoảnh khắc…','Xây dựng không gian điện ảnh…','Treo ảnh lên nền hư không…','Sắp hoàn tất, A12!'];
+var lhints=['Đang tìm những khoảnh khắc…','Gắn kết các khung hình ảnh và quay video…','Hòa âm phối khí kỷ niệm…','Sẵn sàng rồi, mời bạn vào!'];
 var lbar = document.getElementById('lbar');
 var lhint = document.getElementById('lhint');
 
 function stepLoad(){
-  lp += Math.random()*8+4;
+  lp += Math.random()*10+5;
   if(lp>100) lp=100;
   lbar.style.width = lp+'%';
   var hi = Math.floor(lp/26);
@@ -242,66 +226,57 @@ function stepLoad(){
 }
 stepLoad();
 
-// ─── APP DATA ────────────────────────────────────────────
-var SD=250;
-var REAL_PHOTOS = [
-  'z7668935658461_7516f3dcba6320acf07420bcbd6b9722.jpg', 'z7674335941198_3390097f47777aeb67dcf39251457dea.jpg',
-  'z7668935688406_3e8d295b247fa70159648375c2464810.jpg', 'z7669012638233_5095501595d354340b12b8311f260f63.jpg',
-  'z7670057946471_972cdd7b7f08b25f17bdfb3e7ea6469c.jpg', 'z7670057940947_5db4df8f47e2cfbe55f1bbc429804251.jpg',
-  'z7670057935464_5e6a98d5ad880ee225dda86124b0cb97.jpg', 'z7670057951128_2b8c10c128ebfe8c9f3b0452e91cde53.jpg',
-  'z7669479501706_56fafa0db040049a68913eb3a8c56c74.jpg', 'z7670423352481_5e6ab59fbfc0e4792415617cf5ad60b2.jpg',
-  'z7670423735509_2e85b7bbf979803b33a6b5e0daf8b229.jpg', 'z7670423359246_f4b17fc56e33d650ba25196457175739.jpg',
-  'z7670423537815_fcb5aa3383b5709500beed230c1b83ec.jpg', 'z7670423453125_ec52016204bbdf072e29690580ccaed6.jpg',
-  'z7670423648933_fe5cf0b4b4ee4472a44a46d15ae0a7f3.jpg', 'z7670423349014_b0f6343455e884f119a9532bec5f6c65.jpg',
-  'z7670423241299_781630c40e0ab349f080443def6b870f.jpg', 'z7670423157756_2cbd14e14718a2719491c528884782a6.jpg',
-  'z7670423150216_6c40a0549713ff75a5042d5e007d4005.jpg', 'z7674335965930_edb65bdf675a243d21aaeb7353942ffa.jpg',
-  'z7674335972630_5fd1e7550683db87b68953b425d8eb78.jpg', 'z7674335959534_64983c72f55590b507962f338865685a.jpg',
-  'z7674335953630_6a75121878f07986f9d188cb12311223.jpg', 'z7674335947245_ee89ba343de53028165495cc6b63b41c.jpg',
-  'z7670180400128_c831f850f4177f164160b9f629e68753.jpg', 'z7670180412721_bcd56dcb4bb486f19a71fa12c2c6bd7b.jpg',
-  'z7669479922495_852a306b9884a074be8305f7c797cf57.jpg', 'z7669479930626_a750fbb35a4919e7dc3b40654577a2df.jpg',
-  'z7669479939933_a9ecb316dac16ad0d266c37094dd349e.jpg', 'z7669479913281_74907f3b737bdcdd36ffc70e5140023b.jpg',
-  'z7669479512055_cf31ab141c0e863b2503b4f7a96f47fa.jpg', 'z7669479509652_4c2d5af04deb7a7980cae0acb2274873.jpg',
-  'z7669479496221_2beb1327fcc2c8568bebabd21baf1fbd.jpg', 'z7670423439191_da44139ec69e2cb2bba786c7dc87ba38.jpg',
-  'z7672201479564_2d1eca227e3b1d9ca0ef32dbed684dd3.jpg', 'z7672201487062_b3004d0f26ed8deee7a956cafe945acc.jpg',
-  'z7672201494579_0fb7b7c76d5941fbdb793c3b62278744.jpg', 'z7672201502238_b4e64e956f97c6c27c5f8e3cff5ac8f4.jpg',
-  'z7669945981061_8365004b55f547d533931d5afe3bf228.jpg', 'z7669961294847_5f6a492c3fdf7f6ad2b2a15f9fd12c87.jpg',
-  'z7670043817421_766fae0c5e32eec448c2cf17ca7e84f8.jpg', 'z7670043827127_05370d08fc2444e8fc829401ee73a9ac.jpg',
-  'z7670103983225_e1825ba05bbee391727ef54c74cbb804.jpg', 'z7670111197321_256697a3e56a098c3f5ea82283aa1a74.jpg',
-  'z7670698712579_fefb9755001928d3364c07ef8c3ebc81.jpg', 'z7671508740679_b814a6eb955f371bdc705cc0da3134a9.jpg'
+// ─── MEDIA ASSETS MAPPING ─────────────────────────
+var BASE_IMG = 'Anh tham quan/';
+var BASE_VID = 'Video/';
+
+// Categorized photos
+var PHOTOS = {
+  group: [
+    'z7668935658461_7516f3dcba6320acf07420bcbd6b9722.jpg', 'z7670057946471_972cdd7b7f08b25f17bdfb3e7ea6469c.jpg',
+    'z7670057940947_5db4df8f47e2cfbe55f1bbc429804251.jpg', 'z7670423157756_2cbd14e14718a2719491c528884782a6.jpg',
+    'z7671508740679_b814a6eb955f371bdc705cc0da3134a9.jpg', 'z7670698712579_fefb9755001928d3364c07ef8c3ebc81.jpg'
+  ],
+  dining: [
+    'z7670111197321_256697a3e56a098c3f5ea82283aa1a74.jpg', 'z7670103983225_e1825ba05bbee391727ef54c74cbb804.jpg',
+    'z7670043817421_766fae0c5e32eec448c2cf17ca7e84f8.jpg', 'z7670043827127_05370d08fc2444e8fc829401ee73a9ac.jpg',
+    'z7669945981061_8365004b55f547d533931d5afe3bf228.jpg', 'z7669961294847_5f6a492c3fdf7f6ad2b2a15f9fd12c87.jpg'
+  ],
+  study: [
+    'z7672201479564_2d1eca227e3b1d9ca0ef32dbed684dd3.jpg', 'z7672201487062_b3004d0f26ed8deee7a956cafe945acc.jpg',
+    'z7672201494579_0fb7b7c76d5941fbdb793c3b62278744.jpg', 'z7672201502238_b4e64e956f97c6c27c5f8e3cff5ac8f4.jpg'
+  ],
+  trips: [
+    'z7669479501706_56fafa0db040049a68913eb3a8c56c74.jpg', 'z7670423352481_5e6ab59fbfc0e4792415617cf5ad60b2.jpg',
+    'z7670423735509_2e85b7bbf979803b33a6b5e0daf8b229.jpg', 'z7670423359246_f4b17fc56e33d650ba25196457175739.jpg'
+  ]
+};
+
+var VIDEOS = [
+  '7669946958617.mp4', '7670057954534.mp4', '7670075554125.mp4', '7670076301130.mp4',
+  '7670076673841.mp4', '7670122953180.mp4', '7670149295336.mp4', '7670149477541.mp4',
+  '7670149653813.mp4', '7670149832970.mp4', '7670181773702.mp4', '7670184443711.mp4',
+  '7670184649901.mp4', '7670707781950.mp4', '7670892662939.mp4', '7670906979243.mp4',
+  '7670917192599.mp4'
 ];
 
-var BASE_PATH = 'Anh tham quan/';
-var TAGS=['#doan-ket','#A12','#ky-niem','#ban-be','#hoc-tap','#truong-le-quy-don','#thanh-xuan','#no-luc','#tap-the'];
-
-// Meaningful cinematic quotes
 var QS=[
-  {l:['"Một cây làm chẳng nên non,"','"Ba cây chụm lại nên hòn núi cao."'],e:'🤝'},
-  {l:['"Học vấn do người siêng năng đạt được,"','"Tài sản do người tinh tế sở hữu."'],e:'📚'},
-  {l:['"Muốn đi nhanh hãy đi một mình,"','"Muốn đi xa hãy đi cùng nhau."'],e:'🚶‍♂️🚶‍♀️'},
-  {l:['"Tuổi trẻ là chuyến tàu tuyệt vời nhất,"','"Nhờ có bạn bè mà hành trình thêm rực rỡ."'],e:'🚂'},
-  {l:['"Tri thức là ngọn đèn,"','"Sự nỗ lực là dầu thắp sáng ước mơ."'],e:'💡'},
-  {l:['"Không có áp lực,"','"Không thể tạo ra kim cương."'],e:'💎'},
-  {l:['"Những nỗ lực thầm lặng hôm nay,"','"Sẽ là ánh hào quang của ngày mai."'],e:'🌅'},
-  {l:['"Thanh xuân của chúng ta,"','"Được dệt từ nụ cười và tinh thần tập thể."'],e:'✨'}
-];
-
-var CAPS=[
-  {m:'Sức mạnh tập thể A12',s:'Đoàn kết là sức mạnh vô địch'},
-  {m:'Những ngày nỗ lực',s:'Trí tuệ nở hoa từ mồ hôi'},
-  {m:'Nụ cười bằng hữu',s:'Chia ngọt sẻ bùi trong ngày tháng tuyệt vời'},
-  {m:'Gắn kết yêu thương',s:'Chuyến đi khắc ghi tình bạn'},
-  {m:'Kỷ niệm trường lớp',s:'Mảnh ghép rực rỡ của tuổi trẻ'},
-  {m:'Tập thể A12',s:'Sát cánh vượt qua mọi thử thách'},
-  {m:'Nhìn về khoảng trời rộng lớn',s:'Chắp cánh cho ước mơ tương lai'}
+  {l:['"Đoàn kết là sức mạnh."',''],e:'🤝', cat:'unity'},
+  {l:['"Muốn đi nhanh hãy đi một mình,"','"Muốn đi xa hãy đi cùng nhau."'],e:'🚶‍♂️🚶‍♀️', cat:'unity'},
+  {l:['"Học vấn do người siêng năng đạt được,"','"Kiến thức là nền tảng thành công."'],e:'📖', cat:'study'},
+  {l:['"Mỗi nỗ lực hôm nay,"','"Sẽ là ánh hào quang của ngày mai."'],e:'🌅', cat:'study'},
+  {l:['"Những bữa cơm tập thể,"','"ấm áp tình bằng hữu."'],e:'🍲', cat:'dining'},
+  {l:['"Đi thật xa để trở về,"','"A12 luôn là nhà."'],e:'🏠', cat:'trip'},
+  {l:['"Thanh xuân như một thước phim,"','"Lưu giữ trọn vẹn tại đây."'],e:'🎞', cat:'video'}
 ];
 
 var CHS=[
   {p:0,z:0,l:'Lối vào',n:'Prologue',s:''},
-  {p:12,z:-20,l:'Gặp Gỡ',n:'Chương I',s:'Sự hội ngộ diệu kỳ'},
-  {p:30,z:-90,l:'Học Tập',n:'Chương II',s:'Ươm mầm tri thức'},
-  {p:55,z:-140,l:'Đoàn Kết',n:'Chương III',s:'Nắm chặt tay nhau'},
-  {p:75,z:-190,l:'Kỷ Niệm',n:'Chương IV',s:'Hành trang vào đời'},
-  {p:90,z:-240,l:'Trưởng Thành',n:'Finale',s:''}
+  {p:15,z:-25,l:'Gặp Gỡ',n:'Chương I',s:'Những nụ cười đầu tiên'},
+  {p:35,z:-90,l:'Nỗ Lực',n:'Chương II',s:'Hành trình chinh phục tri thức'},
+  {p:60,z:-140,l:'Đoàn Kết',n:'Chương III',s:'Nắm chặt tay nhau trên mọi nẻo đường'},
+  {p:80,z:-195,l:'Phim Kỷ Niệm',n:'Chương IV',s:'Thước phim thanh xuân sống động'},
+  {p:92,z:-245,l:'Lời Kết',n:'Finale',s:''}
 ];
 
 function buildFrames(){
@@ -309,55 +284,51 @@ function buildFrames(){
   function rr(a,b){return a+Math.random()*(b-a);}
   function pk(a){return a[Math.floor(Math.random()*a.length)];}
   
-  function mk(z,x,y,tp,cap){
-    var c=cap||CAPS[id%CAPS.length];
-    var sc=tp==='featured'?rr(1.4,1.6):rr(.85,1.2);
-    var imgSrc = BASE_PATH + REAL_PHOTOS[id % REAL_PHOTOS.length];
-    
+  function mk(z,x,y,tp,src,cap,tag){
+    var sc=tp==='featured'?rr(1.4,1.65):rr(.9,1.2);
     F.push({
       id:id++, x:x, y:y, z:z, 
-      ry:rr(-8,8)*Math.PI/180, rz:rr(-6,6)*Math.PI/180, 
-      tp:tp, cap:c, tag:pk(TAGS), src: imgSrc, sc:sc
-    });
-  }
-  
-  function mkq(z,x,y){
-    F.push({
-      id:id++, x:x, y:y, z:z, 
-      ry:rr(-5,5)*Math.PI/180, rz:rr(-4,4)*Math.PI/180, 
-      tp:'quote', qd:QS[id%QS.length], sq:false, sc:rr(.9,1.1)
+      ry:rr(-12,12)*Math.PI/180, rz:rr(-8,8)*Math.PI/180, 
+      tp:tp, cap:cap, tag:tag, src: src, sc:sc, isVideo: src.endsWith('.mp4')
     });
   }
 
-  mk(-10,0,0,'featured',{m:'A12 — Thanh Xuân Rực Rỡ',s:'Chào mừng bước vào không gian ký ức'});
-  for(var i=0;i<12;i++){var a=(i/12)*Math.PI*2;mk(-5-Math.random()*15,Math.cos(a)*5.5+rr(-1.5,1.5),Math.sin(a)*3+rr(-.5,.5),'standard');}
+  // Section 1: Intro & Group
+  mk(-12,0,0,'featured', BASE_IMG + PHOTOS.group[0], {m:'Tập Thể A12', s:'Sức mạnh của tình đoàn kết'}, '#A12');
+  for(var i=0;i<8;i++) mk(-5-i*3, rr(-7,7), rr(-4,4), 'standard', BASE_IMG + pk(PHOTOS.group), {m:'Gắn kết yêu thương', s:'A12 là một gia đình'}, '#unity');
+
+  // Section 2: Study (Chương 2)
+  [-35, -45, -55].forEach(v => mk(v, rr(-2,2), rr(-1,1), 'featured', BASE_IMG + pk(PHOTOS.study), {m:'Nỗ Lực Học Tập', s:'Trí tuệ nở hoa từ mồ hôi'}, '#study'));
+  for(i=0;i<15;i++) mk(-30-i*4, rr(-9,9), rr(-5,5), 'standard', BASE_IMG + pk(PHOTOS.study), {m:'Ươm mầm tương lai', s:'Chăm chỉ mỗi ngày'}, '#no-luc');
+
+  // Quotes for Study
+  F.push({id:id++, x:4, y:2, z:-40, ry:0, rz:0, tp:'quote', qd:QS[2], sc:1.1});
+
+  // Section 3: Dining & Trips (Chương 3)
+  [-80, -95, -110].forEach(v => mk(v, rr(-3,3), rr(-2,2), 'featured', BASE_IMG + pk(PHOTOS.dining), {m:'Ấm Áp Tình Bạn', s:'Chia sẻ ngọt bùi bên bàn ăn'}, '#dining'));
+  for(i=0;i<20;i++) mk(-75-i*3.5, rr(-10,10), rr(-6,6), 'standard', BASE_IMG + pk(PHOTOS.trips), {m:'Chuyến đi kỷ niệm', s:'Khám phá những chân trời mới'}, '#trip');
+
+  // Section 4: Video Gallery (Chương 4) - Cinematic Movies
+  for(i=0;i<VIDEOS.length;i++){
+    var vz = -180 - i*4;
+    mk(vz, (i%2?1:-1)*4.5, (i%3-1)*2.5, 'featured', BASE_VID + VIDEOS[i], {m:'Thước Phim A12', s:'Kỷ niệm sống động'}, '#video');
+  }
+
+  // Final Quote
+  F.push({id:id++, x:0, y:-1, z:-245, ry:0, rz:0, tp:'quote', qd:QS[6], sc:1.3});
   
-  [-30,-45,-60,-75].forEach(function(fz){mk(fz,rr(-2.5,2.5),rr(-1.5,1.5),'featured');});
-  
-  for(i=0;i<35;i++) mk(-22-(i/35)*66,rr(-8,8),rr(-4,4),'standard');
-  
-  [-100,-115,-130,-145,-160].forEach(function(fz){mk(fz,rr(-3,3),rr(-2,2),'featured');});
-  for(i=0;i<10;i++) mkq(-95-(i/10)*80,rr(-10,10),rr(-5,5));
-  for(i=0;i<45;i++){var t=i/45;mk(-92-t*90,Math.sin(t*Math.PI*3)*4+rr(-9,9),rr(-5,5),'standard');}
-  
-  [-180,-195,-210,-225].forEach(function(fz){mk(fz,rr(-3,3),rr(-1.5,1.5),'featured');});
-  for(i=0;i<20;i++) mk(-185-(i/20)*45,rr(-8,8),rr(-4,4),'standard');
-  
-  mk(-255,0,0,'featured',{m:'"Tri ân bạn bè, trân trọng thanh xuân."',s:'Tập thể A12'});
   return F;
 }
 
 // ─── MAIN INIT ──────────────
 function initApp(){
   var FD = buildFrames();
-
   var waitForFull = setInterval(function(){
     if(lp>=100){
       clearInterval(waitForFull);
       setTimeout(function(){
-        var ls = document.getElementById('ls');
-        ls.classList.add('out');
-        setTimeout(function(){ ls.style.display='none'; }, 1300);
+        document.getElementById('ls').classList.add('out');
+        setTimeout(function(){ document.getElementById('ls').style.display='none'; }, 1300);
         startScene(FD);
       }, 600);
     }
@@ -369,24 +340,23 @@ function startScene(FD){
   var ren = new THREE.WebGLRenderer({canvas:cv, antialias:true});
   ren.setPixelRatio(Math.min(devicePixelRatio,2));
   ren.setSize(innerWidth, innerHeight);
-  ren.setClearColor(0x0a0705,1); // Slightly warmer cinematic tone
+  ren.setClearColor(0x0a0705,1);
 
   var scene = new THREE.Scene();
-  scene.fog = new THREE.FogExp2(0x0a0705, 0.018); // Denser cinematic fog
+  scene.fog = new THREE.FogExp2(0x0a0705, 0.02);
 
   var cam = new THREE.PerspectiveCamera(50, innerWidth/innerHeight, .1, 140);
   cam.position.set(0,0,0);
 
-  scene.add(new THREE.AmbientLight(0xfff4e0, .65));
-  var wl = new THREE.DirectionalLight(0xffd580, 1.3);
+  scene.add(new THREE.AmbientLight(0xfff4e0, .7));
+  var wl = new THREE.DirectionalLight(0xffd580, 1.4);
   wl.position.set(3,5,4); scene.add(wl);
 
-  // Cinematic Particles (More of them, slightly orange/gold glow)
-  var pg=new THREE.BufferGeometry(), pp=new Float32Array(500*3);
-  for(var i=0;i<500;i++){pp[i*3]=(Math.random()-.5)*55;pp[i*3+1]=(Math.random()-.5)*33;pp[i*3+2]=-(Math.random()*270);}
+  // Cinematic Particles
+  var pg=new THREE.BufferGeometry(), pp=new Float32Array(600*3);
+  for(var i=0;i<600;i++){pp[i*3]=(Math.random()-.5)*60;pp[i*3+1]=(Math.random()-.5)*35;pp[i*3+2]=-(Math.random()*280);}
   pg.setAttribute('position',new THREE.BufferAttribute(pp,3));
-  // Dust motes
-  var pMat = new THREE.PointsMaterial({color:0xffcc88,size:.06,transparent:true,opacity:.35,sizeAttenuation:true, blending: THREE.AdditiveBlending});
+  var pMat = new THREE.PointsMaterial({color:0xffcc88,size:.07,transparent:true,opacity:.3,sizeAttenuation:true, blending: THREE.AdditiveBlending});
   var particles = new THREE.Points(pg, pMat);
   scene.add(particles);
 
@@ -399,26 +369,27 @@ function startScene(FD){
     var c=document.createElement('canvas'); c.width=600; c.height=450;
     var ctx=c.getContext('2d');
     var g=ctx.createLinearGradient(0,0,0,450);
-    g.addColorStop(0,'rgba(30,18,10,.97)'); g.addColorStop(1,'rgba(10,6,4,.97)');
+    g.addColorStop(0,'rgba(28,15,8,1)'); g.addColorStop(1,'rgba(8,5,2,1)');
     ctx.fillStyle=g; ctx.fillRect(0,0,600,450);
-    ctx.strokeStyle='rgba(201,168,76,.8)'; ctx.lineWidth=3; ctx.strokeRect(16,16,568,418);
-    ctx.font=(450*.13)+'px serif'; ctx.textAlign='center'; ctx.fillStyle='#faf6f0'; ctx.globalAlpha=.9;
-    ctx.fillText(qd.e||'✨',300,100);
-    ctx.font='italic 600 '+(450*.075)+'px "Playfair Display", Georgia, serif'; ctx.fillStyle='#faf6f0'; ctx.globalAlpha=1;
-    qd.l.forEach(function(ln,i){ if(ln) ctx.fillText(ln,300,230+i*70); });
+    ctx.strokeStyle='rgba(201,168,76,.8)'; ctx.lineWidth=4; ctx.strokeRect(18,18,564,414);
+    ctx.font='70px serif'; ctx.textAlign='center'; ctx.fillStyle='#faf6f0'; ctx.globalAlpha=.9;
+    ctx.fillText(qd.e||'✨',300,110);
+    ctx.font='italic 600 34px "Playfair Display", serif'; ctx.fillStyle='#faf6f0'; ctx.globalAlpha=1;
+    qd.l.forEach(function(ln,i){ if(ln) ctx.fillText(ln,300,240+i*70); });
     return c;
   }
   function mkLbl(cap){
-    var c=document.createElement('canvas'); c.width=600; c.height=100;
-    var ctx=c.getContext('2d'); ctx.clearRect(0,0,600,100);
-    ctx.font='600 26px "Be Vietnam Pro",sans-serif'; ctx.fillStyle='rgba(250,246,240,1)'; ctx.textAlign='center';
-    ctx.fillText(cap.m||'',300,40);
-    ctx.font='300 20px "Be Vietnam Pro",sans-serif'; ctx.fillStyle='rgba(201,168,76,.9)';
-    ctx.fillText(cap.s||'',300,80);
+    var c=document.createElement('canvas'); c.width=600; c.height=110;
+    var ctx=c.getContext('2d'); ctx.clearRect(0,0,600,110);
+    ctx.font='600 28px "Be Vietnam Pro",sans-serif'; ctx.fillStyle='rgba(250,246,240,1)'; ctx.textAlign='center';
+    ctx.fillText(cap.m||'',300,45);
+    ctx.font='300 20px "Be Vietnam Pro",sans-serif'; ctx.fillStyle='rgba(201,168,76,.95)';
+    ctx.fillText(cap.s||'',300,85);
     return c;
   }
 
-  var borderMat = new THREE.MeshLambertMaterial({color:0xffffff});
+  var borderImgMat = new THREE.MeshLambertMaterial({color:0xffffff});
+  var borderVidMat = new THREE.MeshLambertMaterial({color:0xc9a84c}); // Golden border for videos
 
   FD.forEach(function(fd){
     var w=4, h=3;
@@ -426,12 +397,14 @@ function startScene(FD){
     grp.position.set(fd.x,fd.y,fd.z);
     grp.rotation.y=fd.ry; grp.rotation.z=fd.rz;
     grp.scale.setScalar(fd.sc);
-    grp.userData={id:fd.id,tp:fd.tp,cap:fd.cap,tag:fd.tag,src:fd.src,qd:fd.qd,z:fd.z,osc:fd.sc,ory:fd.ry,orz:fd.rz, ox:fd.x, oy:fd.y};
+    grp.userData={id:fd.id, tp:fd.tp, cap:fd.cap, tag:fd.tag, src:fd.src, qd:fd.qd, z:fd.z, isVideo:fd.isVideo, osc:fd.sc, ory:fd.ry, orz:fd.rz};
 
-    var bm=new THREE.Mesh(new THREE.PlaneGeometry(w+.15,h+.15), borderMat);
+    // Border
+    var bm=new THREE.Mesh(new THREE.PlaneGeometry(w+.18,h+.18), fd.isVideo?borderVidMat:borderImgMat);
     bm.position.z=-.01; grp.add(bm);
 
-    var faceMat = new THREE.MeshLambertMaterial({color: 0x050505});
+    // Face
+    var faceMat = new THREE.MeshLambertMaterial({color: 0x070707});
     var mf = new THREE.Mesh(new THREE.PlaneGeometry(w,h), faceMat);
     grp.add(mf);
 
@@ -440,33 +413,45 @@ function startScene(FD){
        faceMat.needsUpdate = true;
        faceMat.color.setHex(0xffffff);
     } else {
-       texLoader.load(fd.src, function(tex){
-           var imgRatio = tex.image.width / tex.image.height;
-           var targetW = 3.6 * imgRatio;
-           var targetH = 3.6;
-           if(targetW > 5.2) { targetW = 5.2; targetH = 5.2 / imgRatio; }
-           bm.geometry = new THREE.PlaneGeometry(targetW+.2, targetH+.2);
-           mf.geometry = new THREE.PlaneGeometry(targetW, targetH);
-           tex.colorSpace = THREE.SRGBColorSpace;
-           faceMat.map = tex;
-           faceMat.needsUpdate = true;
-           faceMat.color.setHex(0xffffff);
-       });
+       if(!fd.isVideo){
+         texLoader.load(fd.src, function(tex){
+             var imgRatio = tex.image.width / tex.image.height;
+             var targetW = 3.6 * imgRatio;
+             var targetH = 3.6;
+             if(targetW > 5.5) { targetW = 5.5; targetH = 5.5 / imgRatio; }
+             bm.geometry = new THREE.PlaneGeometry(targetW+.2, targetH+.2);
+             mf.geometry = new THREE.PlaneGeometry(targetW, targetH);
+             tex.colorSpace = THREE.SRGBColorSpace;
+             faceMat.map = tex;
+             faceMat.needsUpdate = true;
+             faceMat.color.setHex(0xffffff);
+         });
+       } else {
+         // Placeholder for video (shows a play icon)
+         var c=document.createElement('canvas'); c.width=128; c.height=128;
+         var ctx=c.getContext('2d'); ctx.fillStyle='#111'; ctx.fillRect(0,0,128,128);
+         ctx.fillStyle='#c9a84c'; ctx.beginPath(); ctx.moveTo(40,30); ctx.lineTo(100,64); ctx.lineTo(40,98); ctx.fill();
+         faceMat.map = new THREE.CanvasTexture(c);
+         faceMat.needsUpdate = true;
+       }
     }
 
     if(fd.cap && fd.tp!=='quote'){
-      var lm=new THREE.Mesh(new THREE.PlaneGeometry(w*1.4,.8), new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(mkLbl(fd.cap)),transparent:true,depthWrite:false}));
-      lm.position.y=-(h/2+.65); grp.add(lm);
+      var lm=new THREE.Mesh(new THREE.PlaneGeometry(w*1.5,.9), new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(mkLbl(fd.cap)),transparent:true,depthWrite:false}));
+      lm.position.y=-(h/2+.7); grp.add(lm);
     }
 
-    var rim=new THREE.Mesh(new THREE.PlaneGeometry(w+.8,h+.8), new THREE.MeshBasicMaterial({color:0xffaa44,transparent:true,opacity:0,depthWrite:false, blending: THREE.AdditiveBlending}));
-    rim.position.z=-.02; rim.userData.isRim=true; grp.add(rim);
+    var rim=new THREE.Mesh(new THREE.PlaneGeometry(w+.9,h+.9), new THREE.MeshBasicMaterial({color:fd.isVideo?0xc9a84c:0xffcc88,transparent:true,opacity:0,depthWrite:false, blending: THREE.AdditiveBlending}));
+    rim.position.z=-.025; rim.userData.isRim=true; grp.add(rim);
 
     fg.add(grp); fms.push(grp);
   });
 
-  // ─ Scroll & camera state
+  // ─── Interaction ──────────────────────────
   var sp=0, czz=0, tzz=0, cxx=0, curCh=-1, clTO=null;
+  var mv=new THREE.Vector2(), ray=new THREE.Raycaster(), hov=null;
+  var targetRX = 0, targetRY = 0;
+  var curEl=document.getElementById('cursor'), ringEl=document.getElementById('cursor-ring');
 
   function pathX(z){
     if(z>-90||z<-185) return 0;
@@ -483,7 +468,7 @@ function startScene(FD){
     document.getElementById('csub').textContent=c.s;
     var el=document.getElementById('cl'); el.style.opacity='1';
     if(clTO) clearTimeout(clTO);
-    clTO=setTimeout(function(){el.style.opacity='0';},2800);
+    clTO=setTimeout(function(){el.style.opacity='0';},3000);
   }
 
   window.addEventListener('scroll',function(){
@@ -501,18 +486,12 @@ function startScene(FD){
     document.getElementById('fin').classList.toggle('show',p>=94);
   },{passive:true});
 
-  // ─ Floating 3D parallax on mouse move
-  var mv=new THREE.Vector2(), ray=new THREE.Raycaster(), hov=null;
-  var targetRX = 0, targetRY = 0;
-  var curEl=document.getElementById('cursor'), ringEl=document.getElementById('cursor-ring');
-
   window.addEventListener('mousemove',function(e){
     curEl.style.left=e.clientX+'px'; curEl.style.top=e.clientY+'px';
     ringEl.style.left=e.clientX+'px'; ringEl.style.top=e.clientY+'px';
     mv.x=(e.clientX/innerWidth)*2-1; mv.y=-(e.clientY/innerHeight)*2+1;
-    // Mouse based rotation target
-    targetRY = -mv.x * 0.15;
-    targetRX = mv.y * 0.15;
+    targetRY = -mv.x * 0.12;
+    targetRX = mv.y * 0.12;
   });
 
   window.addEventListener('click',function(){
@@ -529,7 +508,7 @@ function startScene(FD){
   function tween(obj,props,dur,ease,cb){
     var start=performance.now();
     var from={};
-    for(var k in props) from[k]=obj[k]?obj[k]:0;
+    for(var k in props) from[k]=obj[k]||0;
     function step(now){
       var t=Math.min((now-start)/dur,1);
       var e=ease?ease(t):t;
@@ -543,75 +522,48 @@ function startScene(FD){
   function easeInOut(t){return t<.5?4*t*t*t:(t-1)*(2*t-2)*(2*t-2)+1;}
   function elastic(t){var c4=(2*Math.PI)/3;return t===0?0:t===1?1:Math.pow(2,-10*t)*Math.sin((t*10-0.75)*c4)+1;}
 
+  function openM(fd){
+    if(fd.tp==='quote') return;
+    var mi = document.getElementById('mimg'), mv = document.getElementById('mvid');
+    mi.style.display='none'; mv.style.display='none'; mv.pause();
+    if(fd.isVideo){
+      mv.src = fd.src; mv.style.display='block'; mv.play();
+    } else {
+      mi.src = fd.src; mi.style.display='block';
+    }
+    document.getElementById('mcap').textContent=fd.cap.m;
+    document.getElementById('msub').textContent=fd.cap.s;
+    document.getElementById('mtag').textContent=fd.tag;
+    document.getElementById('modal').classList.add('open');
+  }
+  window.closeM=function(){
+    document.getElementById('modal').classList.remove('open');
+    document.getElementById('mvid').pause();
+  };
+  window.addEventListener('keydown', e => { if(e.key==='Escape') closeM(); });
+
   function doHover(g){
-    // Dramatic 3D float forward on hover
-    tween(g.scale,{x:g.userData.osc*1.12,y:g.userData.osc*1.12,z:g.userData.osc*1.12},350,easeOut);
-    tween(g.position,{z:g.userData.z + 1.5},350,easeOut); 
-    var r=g.children.find(function(c){return c.userData.isRim;});
-    if(r) tween(r.material,{opacity:.4},280,easeOut);
+    tween(g.scale,{x:g.userData.osc*1.15,y:g.userData.osc*1.15,z:g.userData.osc*1.15},350,easeOut);
+    tween(g.position,{z:g.userData.z+1.5},350,easeOut);
+    var r=g.children.find(c=>c.userData.isRim);
+    if(r) tween(r.material,{opacity:.5},280,easeOut);
   }
   function doUnhover(g){
-    tween(g.scale,{x:g.userData.osc,y:g.userData.osc,z:g.userData.osc},400,easeOut);
-    tween(g.position,{z:g.userData.z},400,easeOut);
-    var r=g.children.find(function(c){return c.userData.isRim;});
+    tween(g.scale,{x:g.userData.osc,y:g.userData.osc,z:g.userData.osc},450,easeOut);
+    tween(g.position,{z:g.userData.z},450,easeOut);
+    var r=g.children.find(c=>c.userData.isRim);
     if(r) tween(r.material,{opacity:0},380,easeOut);
   }
 
   function chkHov(){
     ray.setFromCamera(mv,cam);
     var hits=ray.intersectObjects(fg.children,true);
-    var nh=null;
-    if(hits.length){var o=hits[0].object;while(o.parent&&o.parent!==fg) o=o.parent; nh=o;}
-    if(nh!==hov){
-      if(hov) doUnhover(hov); hov=nh; if(hov) doHover(hov);
-      var s=hov?1.8:1, rs=hov?48:34;
-      curEl.style.transform='translate(-50%,-50%) scale('+s+')';
-      ringEl.style.width=rs+'px'; ringEl.style.height=rs+'px';
-    }
+    var nh=hits.length ? (o=hits[0].object, (o.parent===fg?o:o.parent===fg?o.parent:o.parent.parent)) : null;
+    if(nh!==hov){ if(hov) doUnhover(hov); hov=nh; if(hov) doHover(hov); }
   }
 
-  function chkSweep(cz){
-    fms.forEach(function(g){
-      if(g.userData.tp!=='featured') return;
-      if(Math.abs(cz-g.userData.z)<10&&!swept.has(g.userData.id)){
-        swept.add(g.userData.id);
-        var r=g.children.find(function(c){return c.userData.isRim;});
-        if(r){
-          tween(r.material,{opacity:.6},250,easeOut,function(){
-            setTimeout(function(){tween(r.material,{opacity:0},800,easeOut);},500);
-          });
-        }
-      }
-    });
-  }
-
-  // ─ Modal
-  function openM(fd){
-    if(fd.tp==='quote') return;
-    document.getElementById('mimg').src = fd.src;
-    document.getElementById('mcap').textContent=(fd.cap&&fd.cap.m)||'';
-    document.getElementById('msub').textContent=(fd.cap&&fd.cap.s)||'';
-    document.getElementById('mtag').textContent=fd.tag||'#A12';
-    document.getElementById('modal').classList.add('open');
-  }
-  window.closeM=function(){document.getElementById('modal').classList.remove('open');};
-  
-  // Close modal via ESC key
-  window.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' || e.key === 'Esc') {
-      window.closeM();
-    }
-  });
-
-  // ─ Random memory
-  var jumping=false;
   window.randomMem=function(){
-    var el=FD.filter(function(f){return f.tp!=='quote';});
-    var pk=el[Math.floor(Math.random()*el.length)];
-    document.getElementById('ttext').textContent=(pk.cap&&pk.cap.m)||'Kỷ niệm bất ngờ';
-    var t=document.getElementById('toast'); t.classList.add('show');
-    setTimeout(function(){t.classList.remove('show');},3400);
-    if(jumping) return; jumping=true;
+    var pk=FD.filter(f=>!f.isVideo)[Math.floor(Math.random()*FD.length)];
     var sh=document.documentElement.scrollHeight-innerHeight;
     var tp=Math.max(0,Math.min(1,(-pk.z)/SD));
     var startY=scrollY, endY=tp*sh, startT=performance.now();
@@ -619,47 +571,31 @@ function startScene(FD){
       var t=Math.min((now-startT)/1800,1);
       scrollTo(0, startY+(endY-startY)*easeInOut(t));
       if(t<1) requestAnimationFrame(doJump);
-      else jumping=false;
     }
     requestAnimationFrame(doJump);
-    var m=fms.find(function(g){return g.userData.id===pk.id;});
-    if(m){
-      var r=m.children.find(function(c){return c.userData.isRim;});
-      if(r) tween(r.material,{opacity:.8},300,easeOut,function(){
-        setTimeout(function(){tween(r.material,{opacity:0},800,easeOut);},1000);
-      });
-    }
   };
 
   window.toggleNav=function(){document.getElementById('cnav').classList.toggle('open');};
-  document.addEventListener('click',function(e){
-    if(!e.target.closest('#navbtn')&&!e.target.closest('#cnav'))
-      document.getElementById('cnav').classList.remove('open');
-  });
   window.jumpCh=function(i){
     var c=CHS[Math.min(i,CHS.length-1)];
     var sh=document.documentElement.scrollHeight-innerHeight;
     var startY=scrollY, endY=(c.p/100)*sh, startT=performance.now();
     function go(now){var t=Math.min((now-startT)/1800,1);scrollTo(0,startY+(endY-startY)*easeInOut(t));if(t<1)requestAnimationFrame(go);}
-    requestAnimationFrame(go);
-    document.getElementById('cnav').classList.remove('open');
+    requestAnimationFrame(go); document.getElementById('cnav').classList.remove('open');
   };
-  window.skipNext=function(){jumpCh(Math.min(chIdx(sp*100)+1,CHS.length-1));};
   window.enterEx=function(){
-    var a = document.getElementById('bg-audio');
-    if(a && !mOn) { togMusic(); } // autoplay music if they click enter
+    if(!mOn) togMusic();
     var sh=document.documentElement.scrollHeight-innerHeight;
-    var startY=scrollY, endY=sh*.04, startT=performance.now();
+    var startY=scrollY, endY=sh*.05, startT=performance.now();
     function go(now){var t=Math.min((now-startT)/1600,1);scrollTo(0,startY+(endY-startY)*easeInOut(t));if(t<1)requestAnimationFrame(go);}
     requestAnimationFrame(go);
   };
 
   var mOn=false;
   window.togMusic=function(){
-    var a = document.getElementById('bg-audio');
-    if(!a) return;
+    var a=document.getElementById('bg-audio'); if(!a) return;
     mOn=!mOn;
-    if(mOn) { a.play().catch(function(){}); document.getElementById('micon').textContent='🔊'; document.getElementById('mlbl').textContent='Tắt nhạc'; }
+    if(mOn){ a.play(); document.getElementById('micon').textContent='🔊'; document.getElementById('mlbl').textContent='Tắt nhạc'; }
     else { a.pause(); document.getElementById('micon').textContent='🔇'; document.getElementById('mlbl').textContent='Bật nhạc'; }
   };
 
@@ -672,37 +608,23 @@ function startScene(FD){
   var lastT=0, tn=0;
   function anim(ts){
     requestAnimationFrame(anim); tn++;
-    var dt=ts-lastT; lastT=ts;
     var t=ts*.001;
-
-    czz += (tzz-czz)*.075;
+    czz += (tzz-czz)*.07;
     var px=pathX(czz); cxx+=(px-cxx)*.05;
     cam.position.z=czz; cam.position.x=cxx;
-    cam.position.y=Math.sin(t*.28)*.15; // increased breath
-    
-    // Add dynamic cinematic camera angle based on mouse
+    cam.position.y=Math.sin(t*.3)*.15;
     cam.rotation.y += (targetRY - cam.rotation.y) * 0.05;
     cam.rotation.x += (targetRX - cam.rotation.x) * 0.05;
+    particles.rotation.y = t * 0.03;
 
-    // Particles slow orbit
-    particles.rotation.y = t * 0.05;
-    particles.rotation.x = t * 0.02;
+    if(tn%3===0) fms.forEach((g,i)=>{
+      if(Math.abs(g.userData.z-czz)<35){
+        g.rotation.z = g.userData.orz + Math.sin(t*.5+i)*.02;
+        g.rotation.x = Math.cos(t*.4+i)*.015;
+      }
+    });
 
-    chkSweep(czz);
-    
-    // Add gentle 3D wave to all frames
-    if(tn%2===0) {
-        fms.forEach(function(g,i){
-          if(Math.abs(g.userData.z-czz)<30) {
-            var wave = Math.sin(t*.4 + i*.6);
-            g.rotation.z = g.userData.orz + wave*.015;
-            g.rotation.x = wave*.01;
-          }
-        });
-    }
-    
-    if(tn%3===0) chkHov();
-
+    if(tn%5===0) chkHov();
     ren.render(scene,cam);
   }
   requestAnimationFrame(anim);
