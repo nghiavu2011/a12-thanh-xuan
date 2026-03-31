@@ -220,7 +220,7 @@ body{background:var(--deep);color:var(--cream);font-family:'Be Vietnam Pro',sans
   <div id="cnav">
     <div class="cni" onclick="jumpCh(0)"><div class="nd"></div>Lối vào (Entrance)</div>
     <div class="cni" onclick="jumpCh(1)"><div class="nd"></div>Chương I: Gặp Gỡ & Đồng Hành</div>
-    <div class="cni" onclick="jumpCh(2)"><div class="nd"></div>Chương II: Say Mê Học Tập</div>
+    <div class="cni" onclick="jumpCh(2)"><div class="nd"></div>Chương II: Say Mê Oánh Chén Sau Team Building</div>
     <div class="cni" onclick="jumpCh(3)"><div class="nd"></div>Chương III: Gắn Kết Phút Giây</div>
     <div class="cni" onclick="jumpCh(4)"><div class="nd"></div>Chương IV: Thước Phim Thanh Xuân</div>
     <div class="cni" onclick="jumpCh(5)"><div class="nd"></div>Lời Kết (Finale)</div>
@@ -295,9 +295,9 @@ function getMediaMeta(name) {
   if(n.includes('z76722014')){
     return { 
       cat:'study', 
-      cap:'Say Mê Học Tập', 
-      sub:'Kiến thức là hành trang, nỗ lực là chìa khóa.', 
-      tag:'#Knowledge' 
+      cap:'Say Mê Oánh Chén Sau Team Building', 
+      sub:'Có thực mới vực được đạo', 
+      tag:'#TeamBuilding' 
     };
   }
   
@@ -351,7 +351,7 @@ const VIDS = [
 const CH_DEFS = [
   { p: 0,   z:0,    l: 'Lối vào',   n: 'Prologue', s: 'Chào mừng phụ huynh & học sinh lớp A12' },
   { p: 15,  z:-35,  l: 'Hành Trình', n: 'Chương I', s: 'Những dấu chân kỷ niệm đầu tiên' },
-  { p: 35,  z:-95,  l: 'Học Tập',   n: 'Chương II', s: 'Nỗ lực không ngừng vì tương lai' },
+  { p: 35,  z:-95,  l: 'Oánh Chén',   n: 'Chương II', s: 'Có thực mới vực được đạo' },
   { p: 60,  z:-155, l: 'Gắn Kết',   n: 'Chương III', s: 'Tình bạn kết tinh qua từng bữa ăn, chuyến đi' },
   { p: 82,  z:-220, l: 'Thước Phim', n: 'Chương IV', s: 'Dòng thời gian sống động' },
   { p: 95,  z:-280, l: 'Lời Kết',   n: 'Finale',    s: 'Kỷ niệm mãi mãi trong tim' }
@@ -616,7 +616,7 @@ function renderGrid() {
   const sections = [
     { id:'cap', title:'Thước Phim (Video)', sub:'Dòng thời gian sống động', arr: VIDS.map(n => ({src:B_VID+n, m:getMediaMeta(n), t:'video'})) },
     { id:'trip', title:'Hồi Ức & Chuyến Đi', sub:'Những bước chân đầu tiên', arr: IMGS.filter(n=>getMediaMeta(n).cat==='trip'||getMediaMeta(n).cat==='general').map(n=>({src:B_IMG+n, m:getMediaMeta(n), t:'img'})) },
-    { id:'study', title:'Say Mê Học Tập', sub:'Nỗ lực không ngừng vì tương lai', arr: IMGS.filter(n=>getMediaMeta(n).cat==='study').map(n=>({src:B_IMG+n, m:getMediaMeta(n), t:'img'})) },
+    { id:'study', title:'Say Mê Oánh Chén Sau Team Building', sub:'Có thực mới vực được đạo', arr: IMGS.filter(n=>getMediaMeta(n).cat==='study').map(n=>({src:B_IMG+n, m:getMediaMeta(n), t:'img'})) },
     { id:'dining', title:'Gắn Kết & Bạn Bè', sub:'Tình bạn kết tinh qua từng bữa ăn', arr: IMGS.filter(n=>getMediaMeta(n).cat==='dining'||getMediaMeta(n).cat==='portrait').map(n=>({src:B_IMG+n, m:getMediaMeta(n), t:'img'})) }
   ];
 
