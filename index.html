@@ -49,9 +49,14 @@ body{background:var(--deep);color:var(--cream);font-family:'Be Vietnam Pro',sans
 #hero{position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none;transition:opacity .7s;}
 .hh{font-family:'Playfair Display',serif;font-size:clamp(32px,5.5vw,72px);font-weight:700;text-align:center;line-height:1.1;text-shadow:0 2px 40px rgba(0,0,0,.8);margin-bottom:14px;}
 .hsub{font-size:clamp(12px,1.4vw,15px);color:rgba(250,246,240,.6);text-align:center;margin-bottom:36px;font-style:italic;max-width: 600px;line-height:1.6;}
-.hcta{pointer-events:all;display:inline-flex;align-items:center;gap:9px;padding:13px 30px;border:1.5px solid var(--gold);color:var(--gold);font-family:'Be Vietnam Pro',sans-serif;font-size:12px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;background:rgba(201,168,76,.05);backdrop-filter:blur(8px);transition:all .3s;}
-.hcta:hover{background:rgba(201,168,76,.16);transform:translateY(-2px);box-shadow: 0 0 20px rgba(201,168,76,.2);}
-.hsh{position:absolute;bottom:44px;display:flex;flex-direction:column;align-items:center;gap:8px;font-size:10px;letter-spacing:2px;color:var(--soft);animation:bob 2s ease-in-out infinite;}
+.h-actions{display:flex;gap:16px;pointer-events:all;flex-wrap:wrap;justify-content:center;margin-top:10px;}
+.hcta{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:16px 28px;border:1px solid var(--gold);color:var(--gold);font-family:'Be Vietnam Pro',sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;background:rgba(201,168,76,.08);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:all .4s ease;border-radius:10px;}
+.hcta:hover{background:rgba(201,168,76,.18);transform:translateY(-4px);box-shadow:0 10px 30px rgba(201,168,76,.25);}
+.hcta.glass{border-color:rgba(255,255,255,0.15);color:var(--cream);background:rgba(255,255,255,0.04);}
+.hcta.glass:hover{border-color:rgba(255,255,255,0.4);background:rgba(255,255,255,0.12);box-shadow:0 10px 30px rgba(255,255,255,0.12);}
+.hcta span.icon{font-size:24px;}
+.hcta small{font-size:9.5px;opacity:0.65;letter-spacing:0.5px;text-transform:none;font-style:italic;}
+.hsh{position:absolute;bottom:35px;display:flex;flex-direction:column;align-items:center;gap:8px;font-size:10px;letter-spacing:2px;color:var(--soft);animation:bob 2s ease-in-out infinite;}
 .sl{width:1px;height:36px;background:linear-gradient(to bottom,transparent,var(--gold));}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
 
@@ -98,17 +103,38 @@ body{background:var(--deep);color:var(--cream);font-family:'Be Vietnam Pro',sans
 .mx:hover{color:var(--gold);}
 
 /* GRID VIEW (2D) */
-#grid-view{position:relative;z-index:40;display:none;padding:80px 5% 50px;background:var(--deep);min-height:100vh;}
+.view-grid body::after {
+  content: "A12";
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Playfair Display', serif;
+  font-size: 55vw;
+  font-weight: 700;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(201, 168, 76, 0.05);
+  z-index: 10;
+  pointer-events: none;
+  animation: pulseA12 6s infinite alternate ease-in-out;
+}
+@keyframes pulseA12 {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+  100% { transform: translate(-50%, -50%) scale(1.02); opacity: 1; }
+}
+
+#grid-view{position:relative;z-index:40;display:none;padding:100px 5% 50px;background:var(--deep);min-height:100vh;}
 #grid-view.active{display:block;}
-.gv-ch{margin-bottom:50px;}
-.gv-tit{font-family:'Playfair Display',serif;font-size:32px;color:var(--gold);margin-bottom:8px;border-bottom:1px solid rgba(201,168,76,0.3);padding-bottom:10px;}
-.gv-sub{font-size:14px;color:var(--soft);font-style:italic;margin-bottom:24px;}
-.gv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;}
-@media (min-width: 768px) { .gv-grid{grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;} }
-.gv-item{position:relative;aspect-ratio:3/4;border-radius:6px;overflow:hidden;cursor:pointer;border:1px solid rgba(255,255,255,0.05);background:#1a1510;transition:transform .3s,border-color .3s;}
-.gv-item:hover{transform:translateY(-5px);border-color:var(--gold);}
-.gv-item img, .gv-item video{width:100%;height:100%;object-fit:cover;transition:opacity .3s;}
-.gv-ibadge{position:absolute;top:8px;right:8px;background:rgba(0,0,0,0.7);color:var(--gold);font-size:10px;padding:4px 8px;border-radius:12px;backdrop-filter:blur(4px);pointer-events:none;}
+.gv-ch{margin-bottom:60px;position:relative;z-index:20;}
+.gv-tit{font-family:'Playfair Display',serif;font-size:38px;color:var(--gold);margin-bottom:6px;border-bottom:1px solid rgba(201,168,76,0.25);padding-bottom:12px;text-shadow:0 4px 15px rgba(0,0,0,0.8);}
+.gv-sub{font-size:15px;color:rgba(250,246,240,0.7);font-style:italic;margin-bottom:30px;}
+.gv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:16px;}
+@media (min-width: 768px) { .gv-grid{grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:24px;} }
+.gv-item{position:relative;aspect-ratio:3/4;border-radius:14px;overflow:hidden;cursor:pointer;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.02);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:all 0.4s cubic-bezier(0.25,1,0.5,1);}
+.gv-item:hover{transform:translateY(-8px);border-color:rgba(201,168,76,0.5);box-shadow:0 15px 35px rgba(0,0,0,0.6), 0 0 25px rgba(201,168,76,0.15);}
+.gv-item img, .gv-item video{width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease;}
+.gv-item:hover img, .gv-item:hover video{transform:scale(1.05);}
+.gv-ibadge{position:absolute;top:10px;right:10px;background:rgba(0,0,0,0.6);color:var(--gold);font-size:10px;padding:6px 12px;border-radius:20px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);pointer-events:none;border:1px solid rgba(201,168,76,0.2);}
 
 /* TOGGLE BEHAVIOR */
 .view-grid body{overflow-y:auto;}
@@ -161,8 +187,17 @@ body{background:var(--deep);color:var(--cream);font-family:'Be Vietnam Pro',sans
 <div id="hero">
   <div class="hh">A12 — Một thanh xuân<br><em>rực rỡ.</em></div>
   <div class="hsub">Chắp cánh từ những kỷ niệm, nuôi dưỡng bởi tình bằng hữu và những nỗ lực học tập không ngừng nghỉ của lớp A12 THPT Lê Quý Đôn.</div>
-  <button class="hcta" onclick="enterEx()">✦ Bước vào hành trình</button>
-  <div class="hsh"><div class="sl"></div><span>cuộn để khám phá</span></div>
+  <div class="h-actions">
+    <button class="hcta" onclick="enterEx('3d')">
+      <span class="icon">🌌</span> <span>Không Gian 3D Cinematic</span>
+      <small>(Tuyệt vời hơn trên Máy tính & Tablet)</small>
+    </button>
+    <button class="hcta glass" onclick="enterEx('grid')">
+      <span class="icon">📱</span> <span>Thư Viện Ảnh Lưới Mờ</span>
+      <small>(Tối ưu thao tác cuộn trên Điện thoại)</small>
+    </button>
+  </div>
+  <div class="hsh" style="pointer-events:none;"><div class="sl"></div><span>Hãy bắt đầu</span></div>
 </div>
 
 <div id="cl">
@@ -512,7 +547,15 @@ function startScene(FD) {
     window.scrollTo({ top: (c.p/100)*max, behavior: 'smooth' });
     document.getElementById('cnav').classList.remove('open');
   };
-  window.enterEx = () => { if(!mOn) togMusic(); jumpCh(1); };
+  window.enterEx = (mode) => { 
+    if(!mOn) togMusic(); 
+    if(mode === 'grid') {
+      if(!isGridView) toggleViewMode();
+    } else {
+      if(isGridView) toggleViewMode();
+      setTimeout(() => jumpCh(1), 100);
+    }
+  };
   window.toggleNav = () => document.getElementById('cnav').classList.toggle('open');
   window.randomMem = () => jumpCh(Math.floor(Math.random()*(CH_DEFS.length-1)));
 
