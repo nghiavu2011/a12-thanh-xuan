@@ -227,8 +227,9 @@ body{background:var(--deep);color:var(--cream);font-family:'Be Vietnam Pro',sans
     <div class="cni" onclick="jumpCh(2)"><div class="nd"></div>Chương II: Say Mê Oánh Chén Sau Team Building</div>
     <div class="cni" onclick="jumpCh(3)"><div class="nd"></div>Chương III: Gắn Kết Phút Giây</div>
     <div class="cni" onclick="jumpCh(4)"><div class="nd"></div>Chương IV: Thước Phim Thanh Xuân</div>
-    <div class="cni" onclick="jumpCh(5)"><div class="nd"></div>Lời Kết (Finale)</div>
-    <div class="cni" onclick="window.location.href='tang-thuong.html'" style="border-top:1px solid rgba(255,255,255,0.08);margin-top:4px;padding-top:8px;color:var(--gold);"><div class="nd" style="background:var(--gold);"></div>🏆 Tặng Thưởng Lớp 10 (2026)</div>
+    <div class="cni" onclick="jumpCh(5)"><div class="nd"></div>Chương V: Tặng Thưởng Lớp 10</div>
+    <div class="cni" onclick="jumpCh(6)"><div class="nd"></div>Lời Kết (Finale)</div>
+    <div class="cni" onclick="window.location.href='tang-thuong.html'" style="border-top:1px solid rgba(255,255,255,0.08);margin-top:4px;padding-top:8px;color:var(--gold);"><div class="nd" style="background:var(--gold);"></div>🏆 Phòng Khen Thưởng Riêng</div>
   </div>
   <div id="bp">
     <div class="pl">Tiến độ khám phá</div>
@@ -336,6 +337,38 @@ function getMediaMeta(name) {
     };
   }
 
+  // Achievements
+  if(n.includes('tang thuong cuoi nam/')){
+    const titleIdx = name.length % 8;
+    const subIdx = (name.length + 3) % 8;
+    const titles = [
+      "Vinh Danh Học Sinh Xuất Sắc",
+      "Nỗ Lực Vượt Bậc Cuối Năm",
+      "Gương Sáng Học Tập A12",
+      "Chiến Sĩ Học Tập Tiêu Biểu",
+      "Khen Thưởng Đóng Góp Tập Thể",
+      "Bảng Vàng Khen Thưởng Học Kỳ II",
+      "Thành Tích Xuất Sắc Lớp 10",
+      "Vinh Quang Học Đường"
+    ];
+    const subs = [
+      "Học lực xuất sắc, rạng danh tập thể A12 THPT Lê Quý Đôn",
+      "Nỗ lực vượt qua mọi giới hạn tri thức",
+      "Nêu cao tinh thần tự quản và tinh thần đồng đội",
+      "Tích cực tham gia các hoạt động phong trào và học tập lớp",
+      "Hành trình không ngừng nghỉ gieo hạt tri thức",
+      "Có công mài sắt, có ngày nên kim",
+      "Nâng tầm tinh thần bằng hữu và kỷ luật cao độ",
+      "Kết quả ngọt ngào từ sự bền bỉ của tuổi trẻ"
+    ];
+    return {
+      cat:'achievement',
+      cap: titles[titleIdx],
+      sub: subs[subIdx],
+      tag:'#HocSinhGioi'
+    };
+  }
+
   // Default
   return { 
     cat:'general', 
@@ -346,7 +379,8 @@ function getMediaMeta(name) {
 }
 
 const IMGS = [
-  'z7668935658461_7516f3dcba6320acf07420bcbd6b9722.jpg','z7668935688406_3e8d295b247fa70159648375c2464810.jpg','z7669012638233_5095501595d354340b12b8311f260f63.jpg','z7669479491178_03709587105a7d6dae6a62c3256ad592.jpg','z7669479496221_2beb1327fcc2c8568bebabd21baf1fbd.jpg','z7669479501700_1fa056bb8ca0c45e7c4986eb98e1804e.jpg','z7669479501706_56fafa0db040049a68913eb3a8c56c74.jpg','z7669479509652_4c2d5af04deb7a7980cae0acb2274873.jpg','z7669479512055_cf31ab141c0e863b2503b4f7a96f47fa.jpg','z7669479913281_74907f3b737bdcdd36ffc70e5140023b.jpg','z7669479915955_b86a802f448923056af3aaa0f896068e.jpg','z7669479918401_4e2a908a667a570ab533c9d30be380f1.jpg','z7669479922495_852a306b9884a074be8305f7c797cf57.jpg','z7669479930626_a750fbb35a4919e7dc3b40654577a2df.jpg','z7669479939933_a9ecb316dac16ad0d266c37094dd349e.jpg','z7669479939942_5895f1e139688c8f6d0d9d9fe6283f2c.jpg','z7669945981061_8365004b55f547d533931d5afe3bf228.jpg','z7669946011302_722a2089beb3505a7b045f9c609d3d85.jpg','z7669961294847_5f6a492c3fdf7f6ad2b2a15f9fd12c87.jpg','z7669961314511_2b69707073b1e4601194edacfce0c054.jpg','z7670043817421_766fae0c5e32eec448c2cf17ca7e84f8.jpg','z7670043821781_59e9f60f598c9aca3d7877f9f6bb7eeb.jpg','z7670043827127_05370d08fc2444e8fc829401ee73a9ac.jpg','z7670043833172_d5633befbb876eaa3e8590a3c7685d6b.jpg','z7670043938369_de8ae53c921e8a881425ae8c0dc2fa4a.jpg','z7670057935464_5e6a98d5ad880ee225dda86124b0cb97.jpg','z7670057940947_5db4df8f47e2cfbe55f1bbc429804251.jpg','z7670057946471_972cdd7b7f08b25f17bdfb3e7ea6469c.jpg','z7670057951128_2b8c10c128ebfe8c9f3b0452e91cde53.jpg','z7670103983225_e1825ba05bbee391727ef54c74cbb804.jpg','z7670111197321_256697a3e56a098c3f5ea82283aa1a74.jpg','z7670149074082_8d1cbc6150017248c344899234989858.jpg','z7670180400128_c831f850f4177f164160b9f629e68753.jpg','z7670180412721_bcd56dcb4bb486f19a71fa12c2c6bd7b.jpg','z7670423150216_6c40a0549713ff75a5042d5e007d4005.jpg','z7670423157756_2cbd14e14718a2719491c528884782a6.jpg','z7670423241299_781630c40e0ab349f080443def6b870f.jpg','z7670423349014_b0f6343455e884f119a9532bec5f6c65.jpg','z7670423352481_5e6ab59fbfc0e4792415617cf5ad60b2.jpg','z7670423359246_f4b17fc56e33d650ba25196457175739.jpg','z7670423439191_da44139ec69e2cb2bba786c7dc87ba38.jpg','z7670423453125_ec52016204bbdf072e29690580ccaed6.jpg','z7670423537815_fcb5aa3383b5709500beed230c1b83ec.jpg','z7670423648933_fe5cf0b4b4ee4472a44a46d15ae0a7f3.jpg','z7670423735509_2e85b7bbf979803b33a6b5e0daf8b229.jpg','z7670698712579_fefb9755001928d3364c07ef8c3ebc81.jpg','z7671508740679_b814a6eb955f371bdc705cc0da3134a9.jpg','z7672201479564_2d1eca227e3b1d9ca0ef32dbed684dd3.jpg','z7672201479962_a6a1de64ae6a58bee5882b03355405f5.jpg','z7672201487062_b3004d0f26ed8deee7a956cafe945acc.jpg','z7672201494579_0fb7b7c76d5941fbdb793c3b62278744.jpg','z7672201502238_b4e64e956f97c6c27c5f8e3cff5ac8f4.jpg','z7674335941198_3390097f47777aeb67dcf39251457dea.jpg','z7674335947245_ee89ba343de53028165495cc6b63b41c.jpg','z7674335953630_6a75121878f07986f9d188cb12311223.jpg','z7674335959534_64983c72f55590b507962f338865685a.jpg','z7674335965930_edb65bdf675a243d21aaeb7353942ffa.jpg','z7674335972630_5fd1e7550683db87b68953b425d8eb78.jpg','z7674335980433_e38a73b3f1c7831a3111b06050befd8b.jpg'
+  'z7668935658461_7516f3dcba6320acf07420bcbd6b9722.jpg','z7668935688406_3e8d295b247fa70159648375c2464810.jpg','z7669012638233_5095501595d354340b12b8311f260f63.jpg','z7669479491178_03709587105a7d6dae6a62c3256ad592.jpg','z7669479496221_2beb1327fcc2c8568bebabd21baf1fbd.jpg','z7669479501700_1fa056bb8ca0c45e7c4986eb98e1804e.jpg','z7669479501706_56fafa0db040049a68913eb3a8c56c74.jpg','z7669479509652_4c2d5af04deb7a7980cae0acb2274873.jpg','z7669479512055_cf31ab141c0e863b2503b4f7a96f47fa.jpg','z7669479913281_74907f3b737bdcdd36ffc70e5140023b.jpg','z7669479915955_b86a802f448923056af3aaa0f896068e.jpg','z7669479918401_4e2a908a667a570ab533c9d30be380f1.jpg','z7669479922495_852a306b9884a074be8305f7c797cf57.jpg','z7669479930626_a750fbb35a4919e7dc3b40654577a2df.jpg','z7669479939933_a9ecb316dac16ad0d266c37094dd349e.jpg','z7669479939942_5895f1e139688c8f6d0d9d9fe6283f2c.jpg','z7669945981061_8365004b55f547d533931d5afe3bf228.jpg','z7669946011302_722a2089beb3505a7b045f9c609d3d85.jpg','z7669961294847_5f6a492c3fdf7f6ad2b2a15f9fd12c87.jpg','z7669961314511_2b69707073b1e4601194edacfce0c054.jpg','z7670043817421_766fae0c5e32eec448c2cf17ca7e84f8.jpg','z7670043821781_59e9f60f598c9aca3d7877f9f6bb7eeb.jpg','z7670043827127_05370d08fc2444e8fc829401ee73a9ac.jpg','z7670043833172_d5633befbb876eaa3e8590a3c7685d6b.jpg','z7670043938369_de8ae53c921e8a881425ae8c0dc2fa4a.jpg','z7670057935464_5e6a98d5ad880ee225dda86124b0cb97.jpg','z7670057940947_5db4df8f47e2cfbe55f1bbc429804251.jpg','z7670057946471_972cdd7b7f08b25f17bdfb3e7ea6469c.jpg','z7670057951128_2b8c10c128ebfe8c9f3b0452e91cde53.jpg','z7670103983225_e1825ba05bbee391727ef54c74cbb804.jpg','z7670111197321_256697a3e56a098c3f5ea82283aa1a74.jpg','z7670149074082_8d1cbc6150017248c344899234989858.jpg','z7670180400128_c831f850f4177f164160b9f629e68753.jpg','z7670180412721_bcd56dcb4bb486f19a71fa12c2c6bd7b.jpg','z7670423150216_6c40a0549713ff75a5042d5e007d4005.jpg','z7670423157756_2cbd14e14718a2719491c528884782a6.jpg','z7670423241299_781630c40e0ab349f080443def6b870f.jpg','z7670423349014_b0f6343455e884f119a9532bec5f6c65.jpg','z7670423352481_5e6ab59fbfc0e4792415617cf5ad60b2.jpg','z7670423359246_f4b17fc56e33d650ba25196457175739.jpg','z7670423439191_da44139ec69e2cb2bba786c7dc87ba38.jpg','z7670423453125_ec52016204bbdf072e29690580ccaed6.jpg','z7670423537815_fcb5aa3383b5709500beed230c1b83ec.jpg','z7670423648933_fe5cf0b4b4ee4472a44a46d15ae0a7f3.jpg','z7670423735509_2e85b7bbf979803b33a6b5e0daf8b229.jpg','z7670698712579_fefb9755001928d3364c07ef8c3ebc81.jpg','z7671508740679_b814a6eb955f371bdc705cc0da3134a9.jpg','z7672201479564_2d1eca227e3b1d9ca0ef32dbed684dd3.jpg','z7672201479962_a6a1de64ae6a58bee5882b03355405f5.jpg','z7672201487062_b3004d0f26ed8deee7a956cafe945acc.jpg','z7672201494579_0fb7b7c76d5941fbdb793c3b62278744.jpg','z7672201502238_b4e64e956f97c6c27c5f8e3cff5ac8f4.jpg','z7674335941198_3390097f47777aeb67dcf39251457dea.jpg','z7674335947245_ee89ba343de53028165495cc6b63b41c.jpg','z7674335953630_6a75121878f07986f9d188cb12311223.jpg','z7674335959534_64983c72f55590b507962f338865685a.jpg','z7674335965930_edb65bdf675a243d21aaeb7353942ffa.jpg','z7674335972630_5fd1e7550683db87b68953b425d8eb78.jpg','z7674335980433_e38a73b3f1c7831a3111b06050befd8b.jpg',
+  'Tang Thuong Cuoi Nam/z7854880338745_e791ea074df97c7d91cd5c9eb4827131.jpg','Tang Thuong Cuoi Nam/z7854880346588_3894d5863415e1494bffe40bb142d199.jpg','Tang Thuong Cuoi Nam/z7854880351956_fd723e3b3063373e30b28162ab19b820.jpg','Tang Thuong Cuoi Nam/z7854880355626_504748ca0d8adb5338581d038ff6c110.jpg','Tang Thuong Cuoi Nam/z7854880362478_b36b366b2f37448ae180c8d20709d32f.jpg','Tang Thuong Cuoi Nam/z7854880370612_40215b91dbfe8afe573350106850d6c1.jpg','Tang Thuong Cuoi Nam/z7854880376057_3f7dcf81fe8ccf036b9ffed89a2bbfc1.jpg','Tang Thuong Cuoi Nam/z7854880381635_2325639ae6da86c8c2414a908007646b.jpg','Tang Thuong Cuoi Nam/z7854880389480_c611f0665be2336e0d6e90f6fd5537c5.jpg','Tang Thuong Cuoi Nam/z7854880394751_360bb04a6b69e6fc7172fd39dad0b11b.jpg','Tang Thuong Cuoi Nam/z7854880399174_a34a8f009d02df2d0b403fb42e4f16b3.jpg','Tang Thuong Cuoi Nam/z7854880406861_869f725e6a09021f715dc2d89f1df7f5.jpg','Tang Thuong Cuoi Nam/z7854880414038_709735b85ecd5f09bc808fe04c29135b.jpg','Tang Thuong Cuoi Nam/z7854880420079_e4c96e4fef96a8d96c56758ee3281827.jpg','Tang Thuong Cuoi Nam/z7854880426366_d5cfefc8c68670fc735089ebb12c0fd5.jpg','Tang Thuong Cuoi Nam/z7854880432459_e6a5f0603565f03dbefd88ddd1c2c0de.jpg','Tang Thuong Cuoi Nam/z7854880437908_05413317fb403331a5dd4409bd9f8000.jpg','Tang Thuong Cuoi Nam/z7854880444299_ea06b21698aa869c619e0385ca67098e.jpg','Tang Thuong Cuoi Nam/z7854880451823_c4f9071723c468b7c2f07b88793668e0.jpg','Tang Thuong Cuoi Nam/z7854880457632_7c5d3076fe5e317a6b69db0b5fe06a44.jpg','Tang Thuong Cuoi Nam/z7854880464574_233ada42a28b985e186f7b035b4b2f97.jpg','Tang Thuong Cuoi Nam/z7854880469670_e401454346e5dee13a33fbd74a7f805a.jpg','Tang Thuong Cuoi Nam/z7854880474543_95b093d3611cb75023e48f60fb1f27cc.jpg','Tang Thuong Cuoi Nam/z7854880480848_56757af4cdef5f3c436c5c7183e6cff8.jpg','Tang Thuong Cuoi Nam/z7854880487312_d65d16670859a1d09140a978ee690dc7.jpg','Tang Thuong Cuoi Nam/z7854880495470_40aa55aec416d9df3ff1cbcf24382f10.jpg','Tang Thuong Cuoi Nam/z7854880501158_542a1e7ebf1c93551ec03ebfe668d91f.jpg','Tang Thuong Cuoi Nam/z7854880506459_68e3a3189c3e0abf79c3b00e34923187.jpg','Tang Thuong Cuoi Nam/z7854880514136_dd5a3162b388b306a97a29264f3c89ed.jpg','Tang Thuong Cuoi Nam/z7854880518537_13b9960d7fad02d9353136fc2afbe6b7.jpg','Tang Thuong Cuoi Nam/z7854880527098_1376ceb255fd3bce54536a34473b4512.jpg','Tang Thuong Cuoi Nam/z7854880532115_4ae95501a8cc891b31463ceab19a4f71.jpg','Tang Thuong Cuoi Nam/z7854880538414_17a8bb2f446262e191fdc8b58b6bcc8b.jpg','Tang Thuong Cuoi Nam/z7854880543230_8f4770712a12bd68c3d91c8a589d0bc0.jpg','Tang Thuong Cuoi Nam/z7854880548842_2ff573c38e905c39fc038d748af76900.jpg','Tang Thuong Cuoi Nam/z7854880558315_f1e12c9e7b70b8830e01f58f1b34a086.jpg','Tang Thuong Cuoi Nam/z7854880562020_d8deeb0c727c57b6527ef8144033fc79.jpg','Tang Thuong Cuoi Nam/z7854880570750_f04a6232afc1b36025fd23f0c6fd09ac.jpg'
 ];
 
 const VIDS = [
@@ -355,25 +389,26 @@ const VIDS = [
 
 const CH_DEFS = [
   { p: 0,   z:0,    l: 'Lối vào',   n: 'Prologue', s: 'Chào mừng phụ huynh & học sinh lớp A12' },
-  { p: 15,  z:-35,  l: 'Hành Trình', n: 'Chương I', s: 'Những dấu chân kỷ niệm đầu tiên' },
-  { p: 35,  z:-95,  l: 'Oánh Chén',   n: 'Chương II', s: 'Có thực mới vực được đạo' },
-  { p: 60,  z:-155, l: 'Gắn Kết',   n: 'Chương III', s: 'Tình bạn kết tinh qua từng bữa ăn, chuyến đi' },
-  { p: 82,  z:-220, l: 'Thước Phim', n: 'Chương IV', s: 'Dòng thời gian sống động' },
-  { p: 95,  z:-280, l: 'Lời Kết',   n: 'Finale',    s: 'Kỷ niệm mãi mãi trong tim' }
+  { p: 12,  z:-35,  l: 'Hành Trình', n: 'Chương I', s: 'Những dấu chân kỷ niệm đầu tiên' },
+  { p: 28,  z:-95,  l: 'Oánh Chén',   n: 'Chương II', s: 'Có thực mới vực được đạo' },
+  { p: 48,  z:-160, l: 'Gắn Kết',   n: 'Chương III', s: 'Tình bạn kết tinh qua từng bữa ăn, chuyến đi' },
+  { p: 68,  z:-230, l: 'Thước Phim', n: 'Chương IV', s: 'Dòng thời gian sống động' },
+  { p: 85,  z:-300, l: 'Tặng Thưởng', n: 'Chương V', s: 'Vinh danh thành tích học tập cuối năm 2026' },
+  { p: 96,  z:-370, l: 'Lời Kết',   n: 'Finale',    s: 'Kỷ niệm mãi mãi trong tim' }
 ];
 
 function buildFrames() {
-  let F = []; let id=0; const SD = 300;
+  let F = []; let id=0; const SD = 370;
   const rr = (a, b) => a + Math.random() * (b - a);
 
   // Group images by category for sections
-  const categorized = { trip:[], study:[], dining:[], portrait:[], general:[] };
+  const categorized = { trip:[], study:[], dining:[], portrait:[], general:[], achievement:[] };
   IMGS.forEach(n => { const m = getMediaMeta(n); categorized[m.cat || 'general'].push({n, m}); });
 
   // Chapter 1: General & Trip (Entrance)
   categorized.general.concat(categorized.trip).forEach((item, i) => {
     const z = -10 - i * 3.5;
-    F.push({ id:id++, x:rr(-8, 8), y:rr(-5, 5), z, ry:rr(-.3, .3), rz:rr(-.2, .2), src: B_IMG+item.n, meta: item.m, type:'img' });
+    F.push({ id:id++, x:rr(-8, 8), y:rr(-5, 5), z, ry:rr(-.3, .3), rz:rr(-.2, .2), src: item.n.startsWith('Tang Thuong Cuoi Nam/') ? item.n : (B_IMG+item.n), meta: item.m, type:'img' });
   });
 
   // Chapter 2: Study (Focused cluster)
@@ -395,6 +430,12 @@ function buildFrames() {
       F.push({ id:id++, x: (i%2?5:-5), y: (i%3-1)*3, z, ry: i%2?-.5:.5, rz:0, src: B_VID+vn, meta, type:'video', sc:1.6 });
   });
 
+  // Chapter 5: Tặng Thưởng (Achievements - with gold borders!)
+  categorized.achievement.forEach((item, i) => {
+    const z = -300 - i * 4.5;
+    F.push({ id:id++, x:rr(-8, 8), y:rr(-5, 5), z, ry:rr(-.3, .3), rz:rr(-.2, .2), src: item.n, meta: item.m, type:'img', borderGold: true, sc:1.25 });
+  });
+
   return F;
 }
 
@@ -407,7 +448,7 @@ function initApp(){
 }
 
 function startScene(FD) {
-  const SD = 300;
+  const SD = 370;
   const cv = document.getElementById('c3d');
   const ren = new THREE.WebGLRenderer({ canvas:cv, antialias:true, alpha:true });
   ren.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -455,7 +496,7 @@ function startScene(FD) {
     grp.scale.setScalar(fd.sc || 1);
     
     // Border
-    const bColor = fd.type === 'video' ? 0xc9a84c : 0xffffff;
+    const bColor = (fd.type === 'video' || fd.borderGold) ? 0xc9a84c : 0xffffff;
     const border = new THREE.Mesh(new THREE.PlaneGeometry(w+0.2, h+0.2), new THREE.MeshLambertMaterial({color: bColor}));
     border.position.z = -0.01; grp.add(border);
 
@@ -622,7 +663,8 @@ function renderGrid() {
     { id:'cap', title:'Thước Phim (Video)', sub:'Dòng thời gian sống động', arr: VIDS.map(n => ({src:B_VID+n, m:getMediaMeta(n), t:'video'})) },
     { id:'trip', title:'Hồi Ức & Chuyến Đi', sub:'Những bước chân đầu tiên', arr: IMGS.filter(n=>getMediaMeta(n).cat==='trip'||getMediaMeta(n).cat==='general').map(n=>({src:B_IMG+n, m:getMediaMeta(n), t:'img'})) },
     { id:'study', title:'Say Mê Oánh Chén Sau Team Building', sub:'Có thực mới vực được đạo', arr: IMGS.filter(n=>getMediaMeta(n).cat==='study').map(n=>({src:B_IMG+n, m:getMediaMeta(n), t:'img'})) },
-    { id:'dining', title:'Gắn Kết & Bạn Bè', sub:'Tình bạn kết tinh qua từng bữa ăn', arr: IMGS.filter(n=>getMediaMeta(n).cat==='dining'||getMediaMeta(n).cat==='portrait').map(n=>({src:B_IMG+n, m:getMediaMeta(n), t:'img'})) }
+    { id:'dining', title:'Gắn Kết & Bạn Bè', sub:'Tình bạn kết tinh qua từng bữa ăn', arr: IMGS.filter(n=>getMediaMeta(n).cat==='dining'||getMediaMeta(n).cat==='portrait').map(n=>({src:B_IMG+n, m:getMediaMeta(n), t:'img'})) },
+    { id:'achievement', title:'Tặng Thưởng Cuối Học Kỳ II Lớp 10', sub:'Vinh danh thành tích học tập vượt bậc của lớp A12 kết thúc năm 2026', arr: IMGS.filter(n=>getMediaMeta(n).cat==='achievement').map(n=>({src:n, m:getMediaMeta(n), t:'img'})) }
   ];
 
   sections.forEach(sec => {
